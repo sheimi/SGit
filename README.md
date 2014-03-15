@@ -1,4 +1,4 @@
-SGIT
+SGit
 ====
 
 An unofficial Git client for Android
