@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import me.sheimi.android.activities.SheimiFragmentActivity.OnPasswordEntered;
 import me.sheimi.sgit.R;
+import me.sheimi.sgit.activities.delegate.RepoOperationDelegate;
 import me.sheimi.sgit.database.RepoContract;
 import me.sheimi.sgit.database.models.Repo;
 import me.sheimi.sgit.ssh.SgitTransportCallback;
@@ -18,13 +19,40 @@ import org.eclipse.jgit.api.errors.TransportException;
 import org.eclipse.jgit.lib.ProgressMonitor;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
+import android.content.Context;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiManager.WifiLock;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+
 public class CloneTask extends RepoOpTask {
 
     private OnPasswordEntered mOnPasswordEnter;
+    private WakeLock mWakeLock;
+    private WifiLock mWifiLock;
 
-    public CloneTask(Repo repo, OnPasswordEntered onPasswordEnter) {
+    public CloneTask(Context context, Repo repo, OnPasswordEntered onPasswordEnter) {
         super(repo);
+        
         mOnPasswordEnter = onPasswordEnter;
+        
+        PowerManager powerManager = (PowerManager)
+                context.getSystemService(Context.POWER_SERVICE);
+        mWakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
+                RepoOperationDelegate.class.getSimpleName());
+        mWakeLock.setReferenceCounted(true);
+        
+        WifiManager wifiManager = (WifiManager)
+                context.getSystemService(Context.WIFI_SERVICE);
+        mWifiLock = wifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL,
+                RepoOperationDelegate.class.getSimpleName());
+        mWifiLock.setReferenceCounted(true);
+    }
+
+    protected void onPreExecute() {
+        super.onPreExecute();
+        mWakeLock.acquire();
+        mWifiLock.acquire();
     }
 
     @Override
@@ -39,6 +67,8 @@ public class CloneTask extends RepoOpTask {
 
     protected void onPostExecute(Boolean isSuccess) {
         super.onPostExecute(isSuccess);
+        mWakeLock.release();
+        mWifiLock.release();
         if (isTaskCanceled()) {
             return;
         }
