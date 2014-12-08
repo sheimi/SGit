@@ -97,6 +97,7 @@ public class CloneTask extends RepoOpTask {
     }
 
     public class RepoCloneMonitor implements ProgressMonitor {
+        private int lastProgress = -1;
 
         private int mTotalWork;
         private int mWorkDone;
@@ -111,6 +112,10 @@ public class CloneTask extends RepoOpTask {
             }
             if (mTotalWork != 0) {
                 int p = 100 * mWorkDone / mTotalWork;
+                if(lastProgress == p) {
+                    return;
+                }
+                lastProgress = p;
                 percent = String.format(Locale.getDefault(), "(%d%%)", p);
             }
             mRepo.updateStatus(status + percent);
