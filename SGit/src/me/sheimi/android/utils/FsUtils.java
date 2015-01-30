@@ -146,4 +146,8 @@ public class FsUtils {
         return base.toURI().relativize(file.toURI()).getPath();
     }
 
+    public static File joinPath(File dir, String relative_path) {
+        return new File(dir.getAbsolutePath() + File.separator + relative_path);
+    }
+
 }
