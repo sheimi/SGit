@@ -1,34 +1,36 @@
 language: android
 android:
   components:
-    - tools
-    - platform-tools
-    - build-tools-21.1.2
-    - android-21
-    - extra-android-support
-    - extra-android-m2repository
+  - tools
+  - platform-tools
+  - build-tools-21.1.2
+  - android-21
+  - extra-android-support
+  - extra-android-m2repository
 env:
   global:
-    - TERM=dumb
+  - TERM=dumb
 before_script:
-  - export DATE=$(date)
-  - export VERSION=$(date --date="$DATE" +'%Y%m%d%H%M%S')
+- export DATE=$(date)
+- export VERSION=$(date --date="$DATE" +'%Y%m%d%H%M%S')
 script:
-  - cd SGit
-  - sed -i -r -e "s/(android:versionCode=\")[0-9]+(\")/\1$VERSION\2/g"
-              -e "s/(android:versionName=\"[0-9.]+)(\")/\1-dev-$VERSION\2/g"
-              AndroidManifest.xml
-  - cat AndroidManifest.xml
-  - mv src/me/sheimi/sgit src/me/sheimi/sgit_dev
-  - find . -type f -exec sed -i "s/me\.sheimi\.sgit/me\.sheimi\.sgit_dev/g" '{}' \;
-  - find res -type f -exec sed -i -r 's/(<string name="app_name">SGit)(<\/string>)/\1 Dev\2/g' '{}' \;
-  - ./gradlew build connectedCheck
-  - cd ..
+- ls
+- cd SGit
+- sed -i -r -e "s/(android:versionCode=\")[0-9]+(\")/\1$VERSION\2/g" -e "s/(android:versionName=\"[0-9.]+)(\")/\1-dev-$VERSION\2/g" AndroidManifest.xml
+- cat AndroidManifest.xml
+- mv src/me/sheimi/sgit src/me/sheimi/sgit_dev
+- find . -type f -exec sed -i "s/me\.sheimi\.sgit/me\.sheimi\.sgit_dev/g" '{}' \;
+- find res -type f -exec sed -i -r 's/(<string name="app_name">SGit)(<\/string>)/\1 Dev\2/g' '{}' \;
+- ./gradlew build connectedCheck
+- cd ..
 after_success:
-  - cd SGit
-  - curl -sSL "https://raw.githubusercontent.com/h5bp-bot/scripts/0.6.0/update_site_branch.sh" |
-         bash -s -- --commands "true"
-                    --commit-message "Build generated on $DATE by Travis [ci skip]"
-                    --directory "bin"
-                    --distribution-branch "build"
-                    --source-branch "dev"
+- openssl aes-256-cbc -K $encrypted_e189b73a98fa_key -iv $encrypted_e189b73a98fa_iv -in encypted.tar.enc -out encypted.tar -d
+- tar xvf encrypted.tar
+- chmod 700 sgit_rsa
+- cp sgit_rsa ~/.ssh/id_rsa
+- eval "$(ssh-agent -s)"
+- ssh-add ~/.ssh/id_rsa
+- cd SGit
+- curl -sSL "https://raw.githubusercontent.com/h5bp-bot/scripts/0.6.0/update_site_branch.sh"
+  | bash -s -- --commands "true" --commit-message "Build generated on $DATE by Travis
+  [ci skip]" --directory "bin" --distribution-branch "build" --source-branch "dev"
