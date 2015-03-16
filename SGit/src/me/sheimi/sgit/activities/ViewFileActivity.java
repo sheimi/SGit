@@ -91,21 +91,38 @@ public class ViewFileActivity extends SheimiFragmentActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Uri uri;
+        String mimeType;
+        Intent chooserIntent;
+
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 return true;
-            case R.id.action_edit_in_other_app:
-                Uri uri = Uri.fromFile(mFile);
-                String mimeType = FsUtils.getMimeType(uri.toString());
+            case R.id.action_open_in_other_app:
+                uri = Uri.fromFile(mFile);
+                mimeType = FsUtils.getMimeType(uri.toString());
                 Intent viewIntent = new Intent(Intent.ACTION_VIEW);
-                Intent editIntent = new Intent(Intent.ACTION_EDIT);
                 viewIntent.setDataAndType(uri, mimeType);
+                try {
+                    chooserIntent = Intent.createChooser(viewIntent, 
+                                getString(R.string.label_choose_app_to_open));
+                    startActivity(chooserIntent);
+                    forwardTransition();
+                } catch (ActivityNotFoundException e) {
+                    BasicFunctions.showException(e, R.string.error_no_open_app);
+                } catch (Throwable e) {
+                    BasicFunctions.showException(e);
+                }
+                break;
+            case R.id.action_edit_in_other_app:
+                uri = Uri.fromFile(mFile);
+                mimeType = FsUtils.getMimeType(uri.toString());
+                Intent editIntent = new Intent(Intent.ACTION_EDIT);
                 editIntent.setDataAndType(uri, mimeType);
                 try {
-                    Intent chooserIntent = Intent.createChooser(viewIntent, 
+                    chooserIntent = Intent.createChooser(editIntent, 
                                 getString(R.string.label_choose_app_to_edit));
-                    chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] { editIntent });
                     startActivity(chooserIntent);
                     forwardTransition();
                 } catch (ActivityNotFoundException e) {
