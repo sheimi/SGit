@@ -10,6 +10,8 @@
         <item>Add to stage</item>
         <item>Checkout (Reset Changes)</item>
         <item>Delete</item>
+        <item>Remove from index (Unstage)</item>
+        <item>Force remove from repository</item>
     </string-array>
     <string-array name="repo_operation_names">
         <item>Pull</item>
