@@ -24,6 +24,7 @@
         <item>New File</item>
         <item>New Directory</item>
         <item>Add Remote</item>
+        <item>Remove remote</item>
         <item>Delete</item>
     </string-array>
 
