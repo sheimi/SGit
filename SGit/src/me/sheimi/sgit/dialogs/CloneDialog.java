@@ -35,6 +35,7 @@ public class CloneDialog extends SheimiDialogFragment implements
     private EditText mUsername;
     private EditText mPassword;
     private CheckBox mIsSavePassword;
+    private CheckBox mCloneRecursive;
     private RepoListActivity mActivity;
     private Repo mRepo;
 
@@ -52,6 +53,7 @@ public class CloneDialog extends SheimiDialogFragment implements
         mUsername = (EditText) layout.findViewById(R.id.username);
         mPassword = (EditText) layout.findViewById(R.id.password);
         mIsSavePassword = (CheckBox) layout.findViewById(R.id.savePassword);
+        mCloneRecursive = (CheckBox) layout.findViewById(R.id.cloneRecursive);
 
         if (Constants.DEBUG) {
             mRemoteURL.setText(Repo.TEST_REPO);
@@ -153,7 +155,7 @@ public class CloneDialog extends SheimiDialogFragment implements
         mRepo.setUsername(username);
         mRepo.setPassword(password);
 
-        CloneTask task = new CloneTask(mRepo, this);
+        CloneTask task = new CloneTask(mRepo, this, mCloneRecursive.isChecked());
         task.executeTask();
 
     }
