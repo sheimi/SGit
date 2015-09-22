@@ -21,9 +21,11 @@ import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 public class CloneTask extends RepoOpTask {
 
     private OnPasswordEntered mOnPasswordEnter;
+    private boolean mCloneRecursive;
 
-    public CloneTask(Repo repo, OnPasswordEntered onPasswordEnter) {
+    public CloneTask(Repo repo, OnPasswordEntered onPasswordEnter, boolean cloneRecursive) {
         super(repo);
+        mCloneRecursive = cloneRecursive;
         mOnPasswordEnter = onPasswordEnter;
     }
 
@@ -54,7 +56,8 @@ public class CloneTask extends RepoOpTask {
                 .setURI(mRepo.getRemoteURL()).setCloneAllBranches(true)
                 .setProgressMonitor(new RepoCloneMonitor())
                 .setTransportConfigCallback(new SgitTransportCallback())
-                .setDirectory(localRepo);
+                .setDirectory(localRepo)
+                .setCloneSubmodules(mCloneRecursive);
 
         String username = mRepo.getUsername();
         String password = mRepo.getPassword();
