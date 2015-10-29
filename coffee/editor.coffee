@@ -31,5 +31,9 @@ window.save = () ->
   value = editor.getValue().rtrim()
   CodeLoader.save(value)
 
+window.copy_all = () ->
+  value = editor.getValue().rtrim()
+  return CodeLoader.copy_all(value)
+
 $(document).ready ()->
   CodeLoader.loadCode()

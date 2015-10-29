@@ -53,7 +53,7 @@ public class RepoListActivity extends SheimiFragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.action_add_private_key:
+            case R.id.action_manage_private_keys:
                 intent = new Intent(this, PrivateKeyManageActivity.class);
                 startActivity(intent);
                 return true;
