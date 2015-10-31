@@ -28,7 +28,7 @@ window.setEditable= () ->
 
 window.save = () ->
   editor.setOption "readOnly", true
-  value = editor.getValue().rtrim()
+  value = editor.getValue()
   CodeLoader.save(value)
 
 window.copy_all = () ->
