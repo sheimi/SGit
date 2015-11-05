@@ -75,9 +75,16 @@ public class CommitChangesTask extends RepoOpTask {
                         Context.MODE_PRIVATE);
         String committerName = Profile.getUsername();
         String committerEmail = Profile.getEmail();
-        if (committerName == "" || committerEmail == "") {
-            throw new Exception("Please set your name and email");
-        }
+	if (committerName.equals("")) {
+	    throw new NoMessageException("No committer name specified in git profile");
+	}
+	if (committerEmail.equals("")) {
+	    throw new NoMessageException("No committer e-mail specified in git profile");
+	}
+	if (msg.equals("")) {
+	    throw new NoMessageException("No commit message specified");
+	}
+
         CommitCommand cc = repo.getGit().commit()
                 .setCommitter(committerName, committerEmail).setAll(stageAll)
                 .setAmend(isAmend).setMessage(msg);
