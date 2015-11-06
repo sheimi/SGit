@@ -10,6 +10,7 @@ import me.sheimi.sgit.R;
 import me.sheimi.sgit.activities.CommitDiffActivity;
 import me.sheimi.sgit.adapters.CommitsListAdapter;
 import me.sheimi.sgit.database.models.Repo;
+import me.sheimi.sgit.dialogs.CheckoutDialog;
 
 import org.eclipse.jgit.revwalk.RevCommit;
 
@@ -218,22 +219,15 @@ public class CommitsFragment extends RepoDetailFragment implements
 	case R.id.action_mode_checkout:
 	    {
 		int item = mChosenItem.iterator().next();
-		RevCommit commit = mCommitsListAdapter
-		    .getItem(item);
-		final String fullCommitName = commit.getName();
-		String message = getString(R.string.dialog_comfirm_checkout_commit_msg)
-		    + " "
-		    + Repo.getCommitDisplayName(fullCommitName);
-		showMessageDialog(R.string.dialog_comfirm_checkout_commit_title,
-				  message, R.string.label_checkout,
-				  new DialogInterface.OnClickListener() {
-				      @Override
-				      public void onClick(DialogInterface dialogInterface,
-							  int i) {
-					  getRawActivity().getRepoDelegate()
-					      .checkoutCommit(fullCommitName);
-				      }
-				  });
+		String commit = mCommitsListAdapter.getItem(item).getName();
+		Bundle pathArg = new Bundle();
+		pathArg.putString(CheckoutDialog.BASE_COMMIT, commit);
+		pathArg.putSerializable(Repo.TAG, mRepo);
+		actionMode.finish();
+		CheckoutDialog ckd = new CheckoutDialog();
+		ckd.setArguments(pathArg);
+		ckd.show(getFragmentManager(), "rename-dialog");
+
 		break;
 	    }
 

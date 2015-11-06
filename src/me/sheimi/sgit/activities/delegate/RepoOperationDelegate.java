@@ -79,6 +79,17 @@ public class RepoOperationDelegate {
         checkoutTask.executeTask();
     }
 
+    public void checkoutCommit(final String commitName, final String branch) {
+        CheckoutTask checkoutTask = new CheckoutTask(mRepo, commitName, branch,
+                new AsyncTaskPostCallback() {
+                    @Override
+                    public void onPostExecute(Boolean isSuccess) {
+                        mActivity.reset(branch);
+                    }
+                });
+        checkoutTask.executeTask();
+    }
+
     public void mergeBranch(final Ref commit, final String ffModeStr,
             final boolean autoCommit) {
         MergeTask mergeTask = new MergeTask(mRepo, commit, ffModeStr,
