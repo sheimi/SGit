@@ -17,8 +17,8 @@ colorDiff = (index) ->
 
   diffBlock = $('<div>', {class:'diff-block'})
   infoBlock = $('<div>', {class:'info-block'})
-  pathBlock = $('<div>', {class:'path-block'}).html path
-  changeTypeBlock = $('<div>', {class:'change-type'}).html changeType
+  pathBlock = $('<div>', {class:'path-block'}).text path
+  changeTypeBlock = $('<div>', {class:'change-type'}).text changeType
   infoBlock.append changeTypeBlock
   infoBlock.append pathBlock
 
@@ -28,7 +28,27 @@ colorDiff = (index) ->
   diffBlock.append codeBlock
   $('body').append diffBlock
 
+commitInfo = () ->
+  if not CodeLoader.haveCommitInfo()
+     return
+  commitMessage = CodeLoader.getCommitMessage()
+  commitInfo = CodeLoader.getCommitInfo()
+
+  diffBlock = $('<div>', {class:'diff-block'})
+
+  infoBlock = $('<div>', {class:'info-block'})
+  commitInfoBlock = $('<pre>', {class:'commitinfo-block'}).text commitInfo
+  infoBlock.append commitInfoBlock
+
+  diffBlock.append infoBlock
+
+  codeBlock = $('<code>').text commitMessage
+  codeBlock = $('<pre>', {class:"diff"}).append codeBlock
+  diffBlock.append codeBlock
+  $('body').append diffBlock
+
 window.notifyEntriesReady = () ->
+  commitInfo()
   length = CodeLoader.getDiffSize()
   for index in [0..length-1] by 1
     colorDiff index

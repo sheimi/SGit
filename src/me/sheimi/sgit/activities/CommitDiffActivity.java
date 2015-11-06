@@ -21,17 +21,22 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
+import org.eclipse.jgit.revwalk.RevCommit;
+import org.eclipse.jgit.lib.PersonIdent;
 
 public class CommitDiffActivity extends SheimiFragmentActivity {
 
     public final static String OLD_COMMIT = "old commit";
     public final static String NEW_COMMIT = "new commit";
+    public final static String SHOW_DESCRIPTION = "show_description";
     private static final String JS_INF = "CodeLoader";
     private WebView mDiffContent;
     private ProgressBar mLoading;
     private String mOldCommit;
     private String mNewCommit;
+    private boolean mShowDescription;
     private Repo mRepo;
+    private RevCommit mCommit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,7 @@ public class CommitDiffActivity extends SheimiFragmentActivity {
         Bundle extras = getIntent().getExtras();
         mOldCommit = extras.getString(OLD_COMMIT);
         mNewCommit = extras.getString(NEW_COMMIT);
+	mShowDescription = extras.getBoolean(SHOW_DESCRIPTION);
         mRepo = (Repo) extras.getSerializable(Repo.TAG);
 
         String title = Repo.getCommitDisplayName(mNewCommit) + " : "
@@ -104,6 +110,38 @@ public class CommitDiffActivity extends SheimiFragmentActivity {
             return mDiffStrs.get(index);
         }
 
+	@JavascriptInterface
+	public boolean haveCommitInfo() {
+	    return (mCommit != null);
+	}
+
+	@JavascriptInterface
+	public String getCommitInfo() {
+	    if (mCommit == null) {
+		return "";
+	    }
+
+	    PersonIdent committer, author;
+	    String ret;
+	    committer = mCommit.getCommitterIdent();
+	    author = mCommit.getAuthorIdent();
+	    ret = "commit " + mNewCommit + "\n"
+		+ "Author:     " + author.getName() + " <" + author.getEmailAddress() + ">\n"
+		+ "AuthorDate: " + author.getWhen() + "\n"
+		+ "Commit:     " + committer.getName() + " <" + committer.getEmailAddress() + "\n"
+		+ "CommitDate: " + committer.getWhen() + "\n";
+	    return ret;
+	}
+
+
+	@JavascriptInterface
+	public String getCommitMessage() {
+	    if (mCommit == null) {
+		return "";
+	    }
+	    return mCommit.getFullMessage();
+	}
+
         @JavascriptInterface
         public String getChangeType(int index) {
             DiffEntry diff = mDiffEntries.get(index);
@@ -131,14 +169,15 @@ public class CommitDiffActivity extends SheimiFragmentActivity {
                     mNewCommit, new CommitDiffResult() {
                         @Override
                         public void pushResult(List<DiffEntry> diffEntries,
-                                List<String> diffStrs) {
+					       List<String> diffStrs, RevCommit commit) {
                             mDiffEntries = diffEntries;
                             mDiffStrs = diffStrs;
+			    mCommit = commit;
                             mLoading.setVisibility(View.GONE);
                             mDiffContent.loadUrl(CodeGuesser
                                     .wrapUrlScript("notifyEntriesReady();"));
                         }
-                    });
+		    }, mShowDescription);
             diffTask.executeTask();
         }
 

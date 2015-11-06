@@ -85,7 +85,7 @@ public class CommitsFragment extends RepoDetailFragment implements
 				showToastMessage(R.string.alert_no_older_commits);
 				return;
 			    }
-			    showDiff(null, position, position + 1);
+			    showDiff(null, position, position + 1, true);
 			    return;
 			}
                         chooseItem(position);
@@ -160,7 +160,8 @@ public class CommitsFragment extends RepoDetailFragment implements
         return true;
     }
 
-    private void showDiff(ActionMode actionMode, int item1, int item2) {
+    private void showDiff(ActionMode actionMode, int item1, int item2,
+			  boolean showDescription) {
 	Intent intent = new Intent(getRawActivity(),
 				   CommitDiffActivity.class);
 	int smaller = Math.min(item1, item2);
@@ -171,6 +172,7 @@ public class CommitsFragment extends RepoDetailFragment implements
 	    .getName();
 	intent.putExtra(CommitDiffActivity.OLD_COMMIT, oldCommit);
 	intent.putExtra(CommitDiffActivity.NEW_COMMIT, newCommit);
+	intent.putExtra(CommitDiffActivity.SHOW_DESCRIPTION, showDescription);
 	intent.putExtra(Repo.TAG, mRepo);
 	if (actionMode != null) {
 	    actionMode.finish();
@@ -200,7 +202,7 @@ public class CommitsFragment extends RepoDetailFragment implements
 		    item2 = items[1];
 		}
 
-		showDiff(actionMode, item1, item2);
+		showDiff(actionMode, item1, item2, false);
                 return true;
             case R.id.action_mode_copy_commit:
 		{
