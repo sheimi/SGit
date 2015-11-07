@@ -1,66 +1,88 @@
-package me.sheimi.sgit.dialogs;
+package me.sheimi.sgit.activities;
 
-import me.sheimi.android.views.SheimiDialogFragment;
+import me.sheimi.android.activities.SheimiFragmentActivity;
 import me.sheimi.sgit.R;
-import me.sheimi.sgit.activities.RepoDetailActivity;
+import me.sheimi.sgit.activities.delegate.RepoOperationDelegate;
+import me.sheimi.sgit.adapters.RepoOperationsAdapter;
 import me.sheimi.sgit.database.models.Repo;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
+import me.sheimi.sgit.fragments.BaseFragment;
+import me.sheimi.sgit.fragments.CommitsFragment;
+import me.sheimi.sgit.fragments.FilesFragment;
+import me.sheimi.sgit.fragments.StatusFragment;
+import me.sheimi.sgit.repo.tasks.SheimiAsyncTask.AsyncTaskCallback;
+import android.app.ActionBar;
+import android.app.Activity;
+import android.app.FragmentManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.content.Context;
+import android.view.ViewGroup;
+import android.view.LayoutInflater;
+import android.widget.AdapterView;
+import me.sheimi.sgit.activities.delegate.RepoOperationDelegate;
+import me.sheimi.sgit.repo.tasks.repo.CheckoutTask;
+import me.sheimi.sgit.repo.tasks.SheimiAsyncTask.AsyncTaskPostCallback;
 
-/**
- * Created by sheimi on 8/16/13.
- */
-public class ChooseCommitDialog extends SheimiDialogFragment {
-
+public class BranchChooserActivity extends Activity {
     private Repo mRepo;
-    private RepoDetailActivity mActivity;
     private ListView mBranchTagList;
+    private ProgressBar mLoadding;
     private BranchTagListAdapter mAdapter;
-
+	
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        super.onCreateDialog(savedInstanceState);
-        Bundle args = getArguments();
-        if (args != null && args.containsKey(Repo.TAG)) {
-            mRepo = (Repo) args.getSerializable(Repo.TAG);
-        }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+	View v = getLayoutInflater().inflate(R.layout.fragment_branches, null);
 
-        mActivity = (RepoDetailActivity) getActivity();
-        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+        mRepo = (Repo) getIntent().getSerializableExtra(Repo.TAG);
 
-        mBranchTagList = new ListView(mActivity);
-        mAdapter = new BranchTagListAdapter(mActivity);
+	mBranchTagList = (ListView) v.findViewById(R.id.branches);
+	mLoadding = (ProgressBar) v.findViewById(R.id.loading);
+        mAdapter = new BranchTagListAdapter(this);
         mBranchTagList.setAdapter(mAdapter);
-        builder.setView(mBranchTagList);
 
-        String[] branches = mRepo.getBranches();
+	setTitle(R.string.dialog_choose_branch_title);
+
+	String[] branches = mRepo.getBranches();
         String[] tags = mRepo.getTags();
         mAdapter.addAll(branches);
         mAdapter.addAll(tags);
 
-        builder.setTitle(R.string.dialog_choose_branch_title);
-        mBranchTagList
-                .setOnItemClickListener(new AdapterView.OnItemClickListener() {
+	mBranchTagList
+	    .setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView,
                             View view, int position, long id) {
                         String commitName = mAdapter.getItem(position);
-                        mActivity.getRepoDelegate().checkoutCommit(commitName);
-                        getDialog().cancel();
+			CheckoutTask checkoutTask = new CheckoutTask(mRepo, commitName, false,
+								     new AsyncTaskPostCallback() {
+									 @Override
+									 public void onPostExecute(Boolean isSuccess) {
+									     finish();
+									 }
+								     });
+			mLoadding.setVisibility(View.VISIBLE);
+			mBranchTagList.setVisibility(View.GONE);
+			checkoutTask.executeTask();
                     }
                 });
 
-        return builder.create();
+	setContentView(v);
     }
 
     private class BranchTagListAdapter extends ArrayAdapter<String> {
@@ -106,5 +128,4 @@ public class ChooseCommitDialog extends SheimiDialogFragment {
         public TextView commitTitle;
         public ImageView commitIcon;
     }
-
 }
