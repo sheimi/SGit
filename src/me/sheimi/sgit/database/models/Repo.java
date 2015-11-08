@@ -396,12 +396,12 @@ public class Repo implements Comparable<Repo>, Serializable {
     }
 
     public static int getCommitType(String[] splits) {
-        if (splits.length == 4)
-            return COMMIT_TYPE_REMOTE;
-        if (splits.length != 3)
+	if (splits.length < 3)
             return COMMIT_TYPE_TEMP;
-        String type = splits[1];
-        if ("tags".equals(type))
+	String type = splits[1];
+	if ("remotes".equals(splits[1]))
+            return COMMIT_TYPE_REMOTE;
+	if ("tags".equals(type))
             return COMMIT_TYPE_TAG;
         return COMMIT_TYPE_HEAD;
     }
@@ -426,8 +426,7 @@ public class Repo implements Comparable<Repo>, Serializable {
     }
 
     public static String getCommitDisplayName(String raw) {
-        String[] splits = raw.split("/");
-        int type = getCommitType(splits);
+        int type = getCommitType(raw);
         switch (type) {
             case COMMIT_TYPE_TEMP:
                 if (raw.length() <= 10)
@@ -435,9 +434,9 @@ public class Repo implements Comparable<Repo>, Serializable {
                 return raw.substring(0, 10);
             case COMMIT_TYPE_TAG:
             case COMMIT_TYPE_HEAD:
-                return splits[2];
+                return raw.split("/", 3)[2];
             case COMMIT_TYPE_REMOTE:
-                return splits[1] + "/" + splits[2] + "/" + splits[3];
+                return raw.split("/", 2)[1];
         }
         return null;
     }
