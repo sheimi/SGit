@@ -49,8 +49,7 @@ Inherited from SGit:
 * `git cherrypick`
 * `git checkout <file>` (reset changes of a file)
 
-<a href="https://play.google.com/store/apps/details?id=me.sheimi.sgit"><img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" /></a>
-<a href="https://f-droid.org/repository/browse/?fdfilter=sgit&fdid=me.sheimi.sgit"><img alt="Android app on F-Droid" src="https://fsfe.org/campaigns/android/f-droid.png" width="45" /></a>
+<a href="https://play.google.com/store/apps/details?id=ch.phcoder.jigit"><img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" /></a>
 
 ## Quick start
 
@@ -58,11 +57,11 @@ Inherited from SGit:
 
 1. Click on the *+* icon to add a new repository.
 2. Enter remote URL (see URL format below).
-3. Enter local repository name - note that this is not a path since SGit stores all repositories in the same directory on the mobile device.
+3. Enter local repository name - note that this is not a path since JiGit stores all repositories in the same directory on the mobile device.
 4. Username - username to use to clone the remote repo.
 5. Password - password to use to clone the remote repo.
 6. Click the *Clone* button.
-7. If all the credentials are correct, SGit will download the repository (all branches) to your device.
+7. If all the credentials are correct, JiGit will download the repository (all branches) to your device.
 
 ### Create a local repository
 1. Click on the *+* icon to add a new repository.
@@ -76,7 +75,7 @@ Inherited from SGit:
 
  * SSH running on standard port (22): `ssh://username@server_name/path/to/repo`
 * SSH running on non-standard port: `ssh://username@server_name:port/path/to/repo`
-* `username` is needed - by default, SGit tries to connect as root.
+* `username` is needed - by default, JiGit tries to connect as root.
 
 #### HTTP(S) URLs
 
