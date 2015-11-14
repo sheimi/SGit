@@ -83,19 +83,19 @@ public class CommitsListAdapter extends ArrayAdapter<RevCommit> {
                 holder.commitsIcon);
 
         if (mChosenItems.contains(position)) {
-            convertView.setBackgroundColor(getColor(R.color.pressed_sgit));
+            convertView.setBackgroundColor(sheimiGetColor(R.color.pressed_sgit));
         } else {
             convertView
-                    .setBackgroundColor(getColor(android.R.color.transparent));
+                    .setBackgroundColor(sheimiGetColor(android.R.color.transparent));
         }
 
         return convertView;
     }
 
-    private int getColor(int resId) {
+    private int sheimiGetColor(int resId) {
         Context context = getContext();
         if (context instanceof SheimiFragmentActivity) {
-            return ((SheimiFragmentActivity) context).getColor(resId);
+            return ((SheimiFragmentActivity) context).sheimiGetColor(resId);
         }
         return 0;
     }
