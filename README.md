@@ -1,15 +1,24 @@
-# SGit
+# JiGit
 
-A Git client for Android.
+A Git client for Android. Forked from [SGit](https://play.google.com/store/apps/details?id=me.sheimi.sgit). The only reason for this fork is because original SGit seems to be abandoned.
 
 ## Notes
 
  * All repositories are stored in `[sdcard dir]/Android/data/me.sheimi.sgit/files/[repo name]`. If you want to delete this app, you can manually backup repositories from this location.
- * The GitHub repo of this project is: [sheimi/SGit](https://github.com/sheimi/SGit).
- * If you encounter any issues (bugs, crashes, etc.) and want to help improve this project, please open an issue on [GitHub](https://github.com/sheimi/SGit/issues/new) describing: what the issues are; and how they were caused, to allow for re-creation and fixing of bugs.
+ * The GitHub repo of this project is: [phcoder/SGit](https://github.com/phcoder/SGit).
+ * If you encounter any issues (bugs, crashes, etc.) and want to help improve this project, please open an issue on [GitHub](https://github.com/phcoder/SGit/issues/new) describing: what the issues are; and how they were caused, to allow for re-creation and fixing of bugs.
  * This app is for Android v4.x and later. 4.4 or later or recommended, earlier versions work with reduced functionality and possibly more bugs.
 
 ## Supported Features
+
+Added in JiGit:
+
+* SSH key generation and management
+* SSH keys are stored in memory only this app can use.
+* Branch management
+* Several bug fixes
+
+Inherited from SGit:
 
 * Create local repositories
 * Clone remote repositories
@@ -84,12 +93,3 @@ A Git client for Android.
 
 [GPLv3](./LICENSE)
 
-## Help & Donate
-
-If you want to help improve this project you can fork it and send a pull request.
-
-If you want to donate to this project, you can donate via PayPal.
-
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KWFGX7RNJ6LM8&lc=US&item_name=Donate%20SGit&item_number=sgit&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"></a>
-
-Or donate via [支付宝](https://me.alipay.com/sheimi).
