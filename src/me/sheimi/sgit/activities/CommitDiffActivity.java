@@ -121,6 +121,9 @@ public class CommitDiffActivity extends SheimiFragmentActivity {
 	    });
 
 	shareActionProvider.setShareIntent(shareIntent);
+	if (android.os.Build.VERSION.SDK_INT < 19) {
+	    menu.findItem(R.id.action_save_diff).setVisible(false);
+	}
         return true;
     }
 
@@ -177,11 +180,14 @@ public class CommitDiffActivity extends SheimiFragmentActivity {
                 finish();
                 return true;
 	    case R.id.action_save_diff:
+		if (android.os.Build.VERSION.SDK_INT < 19) {
+		    return true;
+		}
 		Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT)
                     .setType("text/x-patch")
                     .putExtra(Intent.EXTRA_TITLE, Repo.getCommitDisplayName(mNewCommit) + ".diff");
 
-		startActivityForResult(intent, REQUEST_SAVE_DIFF);
+		    startActivityForResult(intent, REQUEST_SAVE_DIFF);
 		return true;
         }
         return super.onOptionsItemSelected(item);

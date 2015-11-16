@@ -7,7 +7,7 @@ A Git client for Android.
  * All repositories are stored in `[sdcard dir]/Android/data/me.sheimi.sgit/files/[repo name]`. If you want to delete this app, you can manually backup repositories from this location.
  * The GitHub repo of this project is: [sheimi/SGit](https://github.com/sheimi/SGit).
  * If you encounter any issues (bugs, crashes, etc.) and want to help improve this project, please open an issue on [GitHub](https://github.com/sheimi/SGit/issues/new) describing: what the issues are; and how they were caused, to allow for re-creation and fixing of bugs.
- * This app is for Android v4.x. It **might** work on Android v2.x, but will not be supported officially due to lack of resources for testing.
+ * This app is for Android v4.x and later. 4.4 or later or recommended, earlier versions work with reduced functionality and possibly more bugs.
 
 ## Supported Features
 
