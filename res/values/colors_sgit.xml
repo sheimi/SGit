@@ -18,11 +18,11 @@
 -->
 
 <resources>
-    <color name="pressed_sgit">#CC33B5E5</color>
+    <color name="pressed_sgit">#CCB533E5</color>
     <color name="branch_name_text">#FFF</color>
-    <color name="branch_name_bg">#02a1d6</color>
-    <color name="branch_name_bg_pressed">#33b5e5</color>
+    <color name="branch_name_bg">#02d6a1</color>
+    <color name="branch_name_bg_pressed">#33e5b5</color>
 
     <color name="general_gray_text_color">#999</color>
-    <color name="chosen_sgit">#BC43C5D5</color>
+    <color name="chosen_sgit">#BCC543D5</color>
 </resources>
