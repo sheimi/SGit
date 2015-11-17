@@ -4,7 +4,7 @@ A Git client for Android. Forked from [SGit](https://play.google.com/store/apps/
 
 ## Notes
 
- * All repositories are stored in `[sdcard dir]/Android/data/me.sheimi.sgit/files/[repo name]`. If you want to delete this app, you can manually backup repositories from this location.
+ * All repositories are stored in `[sdcard dir]/Android/data/ch.phcoder.jigit/files/[repo name]`. If you want to delete this app, you can manually backup repositories from this location.
  * The GitHub repo of this project is: [phcoder/SGit](https://github.com/phcoder/SGit).
  * If you encounter any issues (bugs, crashes, etc.) and want to help improve this project, please open an issue on [GitHub](https://github.com/phcoder/SGit/issues/new) describing: what the issues are; and how they were caused, to allow for re-creation and fixing of bugs.
  * This app is for Android v4.x and later. 4.4 or later or recommended, earlier versions work with reduced functionality and possibly more bugs.
@@ -84,11 +84,10 @@ Inherited from SGit:
 ## To Do List
 
  * Private key passphrase
- * Dark theme
  * Commits related to a file
  * Commit graph (low priority)
 
 ## License
 
-[GPLv3](./LICENSE)
+GPLv3
 
