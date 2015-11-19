@@ -169,7 +169,7 @@ public class BranchChooserActivity extends Activity implements ActionMode.Callba
                     public void onItemClick(AdapterView<?> adapterView,
                             View view, int position, long id) {
                         String commitName = mAdapter.getItem(position);
-			CheckoutTask checkoutTask = new CheckoutTask(mRepo, commitName, false,
+			CheckoutTask checkoutTask = new CheckoutTask(mRepo, commitName, null,
 								     new AsyncTaskPostCallback() {
 									 @Override
 									 public void onPostExecute(Boolean isSuccess) {

@@ -10,8 +10,11 @@
         <item>添加到暂存区</item>
         <item>检出 (重置更改)</item>
         <item>删除</item>
+        <item>Remove cached from repository</item>
+        <item>Remove force from repository</item>
     </string-array>
     <string-array name="repo_operation_names">
+        <item>New Branch</item>
         <item>拉取</item>
         <item>推送</item>
         <item>添加到暂存区</item>

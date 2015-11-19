@@ -69,7 +69,7 @@ public class RepoOperationDelegate {
 
     public void checkoutCommit(final String commitName) {
         CheckoutTask checkoutTask = new CheckoutTask(mRepo, commitName,
-                false,new AsyncTaskPostCallback() {
+                null, new AsyncTaskPostCallback() {
                     @Override
                     public void onPostExecute(Boolean isSuccess) {
                         mActivity.reset(commitName);

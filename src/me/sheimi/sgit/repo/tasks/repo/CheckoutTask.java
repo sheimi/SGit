@@ -35,7 +35,7 @@ public class CheckoutTask extends RepoOpTask {
     public boolean checkout(String name, String newBranch) {
         try {
             if (name == null) {
-                checkoutNewBranch(mNewBranch);
+                checkoutNewBranch(newBranch);
             } else {
 		if (Repo.COMMIT_TYPE_REMOTE == Repo.getCommitType(name)) {
 		    checkoutFromRemote(name, newBranch == null || newBranch.equals("") ? Repo.getCommitName(name) : newBranch);

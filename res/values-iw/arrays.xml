@@ -4,8 +4,11 @@
     <item>הוסף לשלב</item>
     <item>בדיקה (אפס שינויים)</item>
     <item>מחק</item>
+    <item>Remove cached from repository</item>
+    <item>Remove force from repository</item>
   </string-array>
   <string-array name="repo_operation_names">
+    <item>New Branch</item>
     <item>משוך</item>
     <item>דחוף</item>
     <item>הוסף את כולם לשלב</item>
