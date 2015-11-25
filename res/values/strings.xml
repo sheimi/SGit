@@ -111,6 +111,8 @@
     <string name="dialog_title_you_want_to">You want to …</string>
     <string name="dialog_create_branch_title">Create new branch</string>
     <string name="dialog_create_branch_hint">BranchName</string>
+    <string name="dialog_show_unstaged_diff">Unstaged diff</string>
+    <string name="dialog_show_staged_diff">Staged diff</string>
 
     <!-- Others -->
     <string name="pull_msg_init">Pulling … </string>
