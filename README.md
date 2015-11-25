@@ -11,6 +11,18 @@ A Git client for Android. Forked from [SGit](https://play.google.com/store/apps/
 
 ## Supported Features
 
+New in 1.3
+
+* Multiline commit message amend
+* Support for setting commit author
+* Force pull and ability to choose remote for pull
+* Force push and ability to choose remote for push (by Benjamin Tan)
+* Rebase on non-local branch
+* Show staged and unstaged diff.
+* Added three different version of deleting file or directory,
+  delete from working directory , delete from index or from both (by liscju)
+* Renaming of repositories (by liscju)
+
 Added in JiGit:
 
 * SSH key generation and management
