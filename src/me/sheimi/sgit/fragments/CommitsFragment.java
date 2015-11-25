@@ -161,23 +161,23 @@ public class CommitsFragment extends RepoDetailFragment implements
     }
 
     private void showDiff(ActionMode actionMode, int item1, int item2,
-			  boolean showDescription) {
-	Intent intent = new Intent(getRawActivity(),
-				   CommitDiffActivity.class);
-	int smaller = Math.min(item1, item2);
-	int larger = Math.max(item1, item2);
-	String oldCommit = mCommitsListAdapter.getItem(larger)
-	    .getName();
-	String newCommit = mCommitsListAdapter.getItem(smaller)
-	    .getName();
-	intent.putExtra(CommitDiffActivity.OLD_COMMIT, oldCommit);
-	intent.putExtra(CommitDiffActivity.NEW_COMMIT, newCommit);
-	intent.putExtra(CommitDiffActivity.SHOW_DESCRIPTION, showDescription);
-	intent.putExtra(Repo.TAG, mRepo);
-	if (actionMode != null) {
-	    actionMode.finish();
-	}
-	getRawActivity().startActivity(intent);
+                          boolean showDescription) {
+        Intent intent = new Intent(getRawActivity(),
+                CommitDiffActivity.class);
+        int smaller = Math.min(item1, item2);
+        int larger = Math.max(item1, item2);
+        String oldCommit = mCommitsListAdapter.getItem(larger)
+                .getName();
+        String newCommit = mCommitsListAdapter.getItem(smaller)
+                .getName();
+        intent.putExtra(CommitDiffActivity.OLD_COMMIT, oldCommit);
+        intent.putExtra(CommitDiffActivity.NEW_COMMIT, newCommit);
+        intent.putExtra(CommitDiffActivity.SHOW_DESCRIPTION, showDescription);
+        intent.putExtra(Repo.TAG, mRepo);
+        if (actionMode != null) {
+            actionMode.finish();
+        }
+        getRawActivity().startActivity(intent);
     }
 
     @Override
