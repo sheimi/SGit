@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SGit</string>
+    <string name="app_name">JiGit</string>
     <string name="default_text">默认文字</string>
     <string name="title_clone_repo">克隆仓库</string>
-    <string name="preference_file_key">me.sheimi.sgit</string>
 
     <!-- action -->
     <string name="action_search">查找</string>
