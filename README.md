@@ -1,6 +1,6 @@
 # JiGit
 
-A Git client for Android. Forked from [SGit](https://play.google.com/store/apps/details?id=me.sheimi.sgit). The only reason for this fork is because original SGit seems to be abandoned.
+A Git client for Android. Forked from [SGit](https://play.google.com/store/apps/details?id=me.sheimi.sgit). The only reason for this fork is because original seems to be abandoned.
 
 ## Notes
 
@@ -45,7 +45,7 @@ Inherited from SGit:
 * Private keys management
 * Manually choose code language
 * `git diff` between commits (to be enhanced)
-* Import copied repositories (that is, you can copy a repository from computer and import to SGit)
+* Import copied repositories (that is, you can copy a repository from computer and import it)
 * Checkout remote branches
 * Merge branches
 * Push merged content
