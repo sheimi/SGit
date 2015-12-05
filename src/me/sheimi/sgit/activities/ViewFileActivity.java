@@ -111,8 +111,10 @@ public class ViewFileActivity extends SheimiFragmentActivity {
             MenuItem mi = menu.findItem(R.id.action_edit);
             if (mEditMode) {
                 mi.setIcon(R.drawable.ic_action_save);
+                mi.setTitle(R.string.action_edit_save);
             } else {
                 mi.setIcon(R.drawable.ic_action_edit);
+                mi.setTitle(R.string.action_edit);
             }
         }
         return true;
