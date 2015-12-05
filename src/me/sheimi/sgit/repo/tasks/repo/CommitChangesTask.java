@@ -15,6 +15,7 @@ import org.eclipse.jgit.api.errors.NoHeadException;
 import org.eclipse.jgit.api.errors.NoMessageException;
 import org.eclipse.jgit.api.errors.UnmergedPathsException;
 import org.eclipse.jgit.api.errors.WrongRepositoryStateException;
+import org.eclipse.jgit.lib.StoredConfig;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -78,8 +79,14 @@ public class CommitChangesTask extends RepoOpTask {
                         BasicFunctions.getActiveActivity().getString(
                                 R.string.preference_file_key),
                         Context.MODE_PRIVATE);
-        String committerName = Profile.getUsername();
-        String committerEmail = Profile.getEmail();
+
+        StoredConfig config = repo.getGit().getRepository().getConfig();
+        String committerEmail = config.getString("user", null, "email");
+        String committerName = config.getString("user", null, "name");
+        if (committerName == null || committerName.equals(""))
+            committerName = Profile.getUsername();
+        if (committerEmail == null || committerEmail.equals(""))
+            committerEmail = Profile.getEmail();
 	    if (committerName.equals("")) {
 	        throw new NoMessageException("No committer name specified in git profile");
 	    }
