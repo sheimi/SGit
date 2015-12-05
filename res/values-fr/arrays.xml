@@ -29,5 +29,6 @@
         <item>Add remote</item>
         <item>Supprimer</item>
         <item>Raw config</item>
+        <item>Config</item>
     </string-array>
 </resources>

@@ -29,6 +29,7 @@
         <item>远程</item>
         <item>删除</item>
         <item>Raw config</item>
+        <item>Config</item>
     </string-array>
 
 </resources>

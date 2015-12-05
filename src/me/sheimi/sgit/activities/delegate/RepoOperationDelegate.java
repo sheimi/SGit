@@ -10,6 +10,7 @@ import me.sheimi.sgit.activities.delegate.actions.AddAllAction;
 import me.sheimi.sgit.activities.delegate.actions.AddRemoteAction;
 import me.sheimi.sgit.activities.delegate.actions.CherryPickAction;
 import me.sheimi.sgit.activities.delegate.actions.CommitAction;
+import me.sheimi.sgit.activities.delegate.actions.ConfigAction;
 import me.sheimi.sgit.activities.delegate.actions.DeleteAction;
 import me.sheimi.sgit.activities.delegate.actions.DiffAction;
 import me.sheimi.sgit.activities.delegate.actions.MergeAction;
@@ -60,6 +61,7 @@ public class RepoOperationDelegate {
         mActions.add(new AddRemoteAction(mRepo, mActivity));
         mActions.add(new DeleteAction(mRepo, mActivity));
         mActions.add(new RawConfigAction(mRepo, mActivity));
+        mActions.add(new ConfigAction(mRepo, mActivity));
     }
 
     public void executeAction(int key) {
