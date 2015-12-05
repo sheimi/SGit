@@ -28,6 +28,7 @@
         <item>New Directory</item>
         <item>Add Remote</item>
         <item>Delete</item>
+        <item>Raw config</item>
     </string-array>
     <string-array name="dialog_choose_repo_action_items">
         <item>Rename</item>

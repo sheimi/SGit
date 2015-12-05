@@ -28,6 +28,7 @@
         <item>新建文件夹</item>
         <item>远程</item>
         <item>删除</item>
+        <item>Raw config</item>
     </string-array>
 
 </resources>

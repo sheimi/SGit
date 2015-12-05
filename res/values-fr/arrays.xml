@@ -28,5 +28,6 @@
         <item>Nouveau dépôt</item>
         <item>Add remote</item>
         <item>Supprimer</item>
+        <item>Raw config</item>
     </string-array>
 </resources>

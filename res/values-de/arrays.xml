@@ -28,6 +28,7 @@
         <item>Neuer Ordner</item>
         <item>Remote hinzufügen</item>
         <item>Löschen</item>
+        <item>Raw config</item>
     </string-array>
 
 </resources>

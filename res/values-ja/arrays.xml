@@ -28,6 +28,7 @@
         <item>New Directory</item>
         <item>Add Remote</item>
         <item>Delete</item>
+        <item>Raw config</item>
     </string-array>
 
 </resources>
