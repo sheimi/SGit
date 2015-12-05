@@ -32,7 +32,7 @@ public class PrivateKeyUtils {
 	    try {
 		JSch jsch=new JSch();
 		KeyPair kpair=KeyPair.load(jsch, privateKey.getAbsolutePath());
-		kpair.writePublicKey(new FileOutputStream(publicKey), "jigit");
+		kpair.writePublicKey(new FileOutputStream(publicKey), "forker");
 		kpair.dispose();
 	    } catch (Exception e) {
 		//TODO 

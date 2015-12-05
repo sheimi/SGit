@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">JiGit</string>
+    <string name="app_name">Forker</string>
     <string name="default_text">Default Text</string>
     <string name="title_clone_repo">Clone Repository</string>
     <string name="preference_file_key">me.sheimi.sgit</string>

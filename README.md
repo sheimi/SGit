@@ -1,4 +1,4 @@
-# JiGit
+# Forker
 
 A Git client for Android. Forked from [SGit](https://play.google.com/store/apps/details?id=me.sheimi.sgit). The only reason for this fork is because original seems to be abandoned.
 
@@ -23,7 +23,7 @@ New in 1.3
   delete from working directory , delete from index or from both (by liscju)
 * Renaming of repositories (by liscju)
 
-Added in JiGit:
+Added in Forker:
 
 * SSH key generation and management
 * SSH keys are stored in memory only this app can use.
@@ -69,11 +69,11 @@ Inherited from SGit:
 
 1. Click on the *+* icon to add a new repository.
 2. Enter remote URL (see URL format below).
-3. Enter local repository name - note that this is not a path since JiGit stores all repositories in the same directory on the mobile device.
+3. Enter local repository name - note that this is not a path since Forker stores all repositories in the same directory on the mobile device.
 4. Username - username to use to clone the remote repo.
 5. Password - password to use to clone the remote repo.
 6. Click the *Clone* button.
-7. If all the credentials are correct, JiGit will download the repository (all branches) to your device.
+7. If all the credentials are correct, Forker will download the repository (all branches) to your device.
 
 ### Create a local repository
 1. Click on the *+* icon to add a new repository.
@@ -87,7 +87,7 @@ Inherited from SGit:
 
  * SSH running on standard port (22): `ssh://username@server_name/path/to/repo`
 * SSH running on non-standard port: `ssh://username@server_name:port/path/to/repo`
-* `username` is needed - by default, JiGit tries to connect as root.
+* `username` is needed - by default, Forker tries to connect as root.
 
 #### HTTP(S) URLs
 

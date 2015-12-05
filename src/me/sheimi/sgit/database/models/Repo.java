@@ -68,7 +68,7 @@ public class Repo implements Comparable<Repo>, Serializable {
     private StoredConfig mStoredConfig;
 
     public static final String TEST_REPO = "https://github.com/sheimi/test.git";
-    public static final String TEST_LOCAL = "JiGit";
+    public static final String TEST_LOCAL = "Forker";
     public static final String DOT_GIT_DIR = ".git";
     public static final String EXTERNAL_PREFIX = "external://";
     public static final String REPO_DIR = "repo";

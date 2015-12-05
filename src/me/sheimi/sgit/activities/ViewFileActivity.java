@@ -193,7 +193,7 @@ public class ViewFileActivity extends SheimiFragmentActivity {
 	@JavascriptInterface
         public void copy_all(final String content) {
 	    ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
-	    ClipData clip = ClipData.newPlainText("jigit", content);
+	    ClipData clip = ClipData.newPlainText("forker", content);
 	    clipboard.setPrimaryClip(clip);
 	}
 

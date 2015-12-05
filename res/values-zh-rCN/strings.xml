@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">JiGit</string>
+    <string name="app_name">Forker</string>
     <string name="default_text">默认文字</string>
     <string name="title_clone_repo">克隆仓库</string>
 

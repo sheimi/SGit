@@ -93,7 +93,7 @@ public class PrivateKeyGenerate extends SheimiDialogFragment {
 	    JSch jsch=new JSch();
 	    KeyPair kpair=KeyPair.genKeyPair(jsch, type, key_size);
 	    kpair.writePrivateKey(new FileOutputStream(newKey));
-	    kpair.writePublicKey(new FileOutputStream(newPubKey), "jigit");
+	    kpair.writePublicKey(new FileOutputStream(newPubKey), "forker");
 	    kpair.dispose();
 	} catch (Exception e) {
 	    //TODO 
