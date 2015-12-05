@@ -57,8 +57,8 @@ public class ViewFileActivity extends SheimiFragmentActivity {
 
         Bundle extras = getIntent().getExtras();
         String fileName = extras.getString(TAG_FILE_NAME);
-	mActivityMode = extras.getShort(TAG_MODE, TAG_MODE_NORMAL);
-	
+        mActivityMode = extras.getShort(TAG_MODE, TAG_MODE_NORMAL);
+
         mFile = new File(fileName);
         setTitle(mFile.getName());
         mFileContent.addJavascriptInterface(new CodeLoader(), JS_INF);
@@ -66,7 +66,7 @@ public class ViewFileActivity extends SheimiFragmentActivity {
         webSettings.setJavaScriptEnabled(true);
         mFileContent.setWebChromeClient(new WebChromeClient() {
             public void onConsoleMessage(String message, int lineNumber,
-                    String sourceID) {
+                                         String sourceID) {
                 Log.d("MyApplication", message + " -- From line " + lineNumber
                         + " of " + sourceID);
             }
@@ -100,21 +100,21 @@ public class ViewFileActivity extends SheimiFragmentActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.view_file, menu);
-	if (mActivityMode == TAG_MODE_SSH_KEY) {
-	    menu.removeItem(R.id.action_edit);
-	    menu.removeItem(R.id.action_edit_in_other_app);
-	    menu.removeItem(R.id.action_choose_language);
-	} else {
-	    menu.removeItem(R.id.action_copy_all);
-	}
-	if (mActivityMode != TAG_MODE_SSH_KEY) {
-	    MenuItem mi = menu.findItem(R.id.action_edit);
-	    if (mEditMode) {
-		mi.setIcon(R.drawable.ic_action_save);
-	    } else {
-		mi.setIcon(R.drawable.ic_action_edit);
-	    }
-	}
+        if (mActivityMode == TAG_MODE_SSH_KEY) {
+            menu.removeItem(R.id.action_edit);
+            menu.removeItem(R.id.action_edit_in_other_app);
+            menu.removeItem(R.id.action_choose_language);
+        } else {
+            menu.removeItem(R.id.action_copy_all);
+        }
+        if (mActivityMode != TAG_MODE_SSH_KEY) {
+            MenuItem mi = menu.findItem(R.id.action_edit);
+            if (mEditMode) {
+                mi.setIcon(R.drawable.ic_action_save);
+            } else {
+                mi.setIcon(R.drawable.ic_action_edit);
+            }
+        }
         return true;
     }
 
@@ -125,9 +125,9 @@ public class ViewFileActivity extends SheimiFragmentActivity {
                 finish();
                 return true;
             case R.id.action_edit_in_other_app:
-		if (mActivityMode == TAG_MODE_SSH_KEY) {
-		    return true;
-		}
+                if (mActivityMode == TAG_MODE_SSH_KEY) {
+                    return true;
+                }
                 Uri uri = Uri.fromFile(mFile);
                 String mimeType = FsUtils.getMimeType(uri.toString());
                 Intent viewIntent = new Intent(Intent.ACTION_VIEW);
@@ -135,9 +135,9 @@ public class ViewFileActivity extends SheimiFragmentActivity {
                 viewIntent.setDataAndType(uri, mimeType);
                 editIntent.setDataAndType(uri, mimeType);
                 try {
-                    Intent chooserIntent = Intent.createChooser(viewIntent, 
-                                getString(R.string.label_choose_app_to_edit));
-                    chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] { editIntent });
+                    Intent chooserIntent = Intent.createChooser(viewIntent,
+                            getString(R.string.label_choose_app_to_edit));
+                    chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{editIntent});
                     startActivity(chooserIntent);
                     forwardTransition();
                 } catch (ActivityNotFoundException e) {
@@ -147,9 +147,9 @@ public class ViewFileActivity extends SheimiFragmentActivity {
                 }
                 break;
             case R.id.action_edit:
-		if (mActivityMode == TAG_MODE_SSH_KEY) {
-		    return true;
-		}
+                if (mActivityMode == TAG_MODE_SSH_KEY) {
+                    return true;
+                }
                 mEditMode = !mEditMode;
                 mFileContent.setFocusable(mEditMode);
                 mFileContent.setFocusableInTouchMode(mEditMode);
@@ -163,14 +163,14 @@ public class ViewFileActivity extends SheimiFragmentActivity {
                 invalidateOptionsMenu();
                 return true;
             case R.id.action_choose_language:
-		if (mActivityMode == TAG_MODE_SSH_KEY) {
-		    return true;
-		}
+                if (mActivityMode == TAG_MODE_SSH_KEY) {
+                    return true;
+                }
                 ChooseLanguageDialog cld = new ChooseLanguageDialog();
                 cld.show(getFragmentManager(), "choose language");
                 return true;
-	case R.id.action_copy_all:
-	        mFileContent.loadUrl(CodeGuesser.wrapUrlScript("copy_all();"));
+            case R.id.action_copy_all:
+                mFileContent.loadUrl(CodeGuesser.wrapUrlScript("copy_all();"));
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -190,19 +190,19 @@ public class ViewFileActivity extends SheimiFragmentActivity {
             return mCode;
         }
 
-	@JavascriptInterface
+        @JavascriptInterface
         public void copy_all(final String content) {
-	    ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
-	    ClipData clip = ClipData.newPlainText("forker", content);
-	    clipboard.setPrimaryClip(clip);
-	}
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("forker", content);
+            clipboard.setPrimaryClip(clip);
+        }
 
 
         @JavascriptInterface
         public void save(final String content) {
-	    if (mActivityMode == TAG_MODE_SSH_KEY) {
-		return;
-	    }
+            if (mActivityMode == TAG_MODE_SSH_KEY) {
+                return;
+            }
             if (content == null) {
                 showToastMessage(R.string.alert_save_failed);
                 return;
@@ -251,12 +251,12 @@ public class ViewFileActivity extends SheimiFragmentActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-		    String lang;
-		    if (mActivityMode == TAG_MODE_SSH_KEY) {
-			lang = null;
-		    } else {
-			lang = CodeGuesser.guessCodeType(mFile.getName());
-		    }
+                    String lang;
+                    if (mActivityMode == TAG_MODE_SSH_KEY) {
+                        lang = null;
+                    } else {
+                        lang = CodeGuesser.guessCodeType(mFile.getName());
+                    }
                     String js = String.format("setLang('%s')", lang);
                     mFileContent.loadUrl(CodeGuesser.wrapUrlScript(js));
                     mLoading.setVisibility(View.INVISIBLE);
