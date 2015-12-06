@@ -29,8 +29,6 @@
   <string name="label_rename">שנה שם</string>
   <string name="label_send_feedback">שלח משוב</string>
   <string name="label_import">יבא</string>
-  <string name="label_push">דחיפה</string>
-  <string name="label_push_all">דחוף הכל</string>
   <string name="label_create">צור</string>
   <string name="label_checkout">בדיקה</string>
   <string name="label_git_name">שם</string>
@@ -39,11 +37,7 @@
   <string name="label_choose_app_to_open">בחר יישום לפתיחה</string>
   <string name="label_choose_app_to_edit">בחר יישום לעריכה</string>
   <string name="title_activity_import_repository">ייבא מאגר</string>
-  <string name="title_activity_view_file">קובץ: </string>
   <string name="title_activity_commit_diff">הבדלים:   </string>
-  <string name="title_section1">חלק 1</string>
-  <string name="title_section2">חלק 2</string>
-  <string name="title_section3">חלק 3</string>
   <string name="tab_files_label">קבצים</string>
   <string name="tab_status_label">מצב</string>
   <string name="dialog_choose_branch_title">בחר שלוחה</string>

@@ -11,7 +11,6 @@
     <string name="action_clone">Cloner</string>
     <string name="action_import_repo">Importer le dépôt</string>
     <string name="action_git_profile">Profil Git</string>
-    <string name="action_settings">Paramètres</string>
     <string name="action_manage_private_key">Clés privées</string>
     <string name="action_feedback">Feedback</string>
     <string name="action_choose_language">Choisir la langue</string>
@@ -35,8 +34,6 @@
     <string name="label_rename">Renommer</string>
     <string name="label_send_feedback">Envoyer un feedback</string>
     <string name="label_import">Importer</string>
-    <string name="label_push">Push</string>
-    <string name="label_push_all">Push all</string>
     <string name="label_create">Créer</string>
     <string name="label_checkout">Checkout</string>
     <string name="label_git_name">Nom</string>
@@ -48,11 +45,7 @@
     <!-- for title -->
     <string name="title_activity_repo_detail">RepoDetailActivity</string>
     <string name="title_activity_import_repository">Importer le dépôt</string>
-    <string name="title_activity_view_file">Fichier: </string>
     <string name="title_activity_commit_diff">Diff:   </string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
     <string name="tab_files_label">Fichiers</string>
     <string name="tab_commits_label">Commits</string>
     <string name="tab_status_label">Statut</string>
@@ -89,7 +82,6 @@
     <string name="progress_right_init">0/0</string>
     <string name="push_msg_init">Pushing …</string>
     <string name="title_activity_private_key_manage">Gérer ses clés privées</string>
-    <string name="hello_world">Bonjour tout le monde!</string>
     <string name="title_activity_explore_file">Explorez les fichiers</string>
 
     <!-- toast msg -->

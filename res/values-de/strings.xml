@@ -9,7 +9,6 @@
     <string name="action_clone">Clonen</string>
     <string name="action_import_repo">Repository importieren</string>
     <string name="action_git_profile">Git Profil</string>
-    <string name="action_settings">Einstellungen</string>
     <string name="action_manage_private_key">Private Schlüssel</string>
     <string name="action_feedback">Feedback</string>
     <string name="action_choose_language">Sprache wählen</string>
@@ -33,8 +32,6 @@
     <string name="label_rename">Rename</string>
     <string name="label_send_feedback">Feedback senden</string>
     <string name="label_import">Importieren</string>
-    <string name="label_push">Pushen</string>
-    <string name="label_push_all">Push All</string>
     <string name="label_create">Erzeugen</string>
     <string name="label_checkout">Checkout</string>
     <string name="label_git_name">Name</string>
@@ -46,7 +43,6 @@
     <!-- for title -->
     <string name="title_activity_repo_detail">Repository</string>
     <string name="title_activity_import_repository">Repository importieren</string>
-    <string name="title_activity_view_file">Datei: </string>
     <string name="title_activity_commit_diff">Diff:   </string>
     <string name="tab_files_label">Dateien</string>
     <string name="tab_commits_label">Commits</string>

@@ -2,7 +2,6 @@
 <resources>
 
     <string name="error_invalid_remote">Invalid remote</string>
-    <string name="error_transport">Transport error</string>
     <string name="error_clone_failed">Clone failed</string>
     <string name="error_pull_failed_not_on_branch">Pull failed: not on branch</string>
     <string name="error_pull_failed">Pull failed</string>
@@ -10,7 +9,6 @@
     <string name="error_out_of_memory">Out of memory</string>
     <string name="error_no_edit_app">No apps can edit source file</string>
     <string name="error_no_open_app">No apps can open source file</string>
-    <string name="error_can_not_edit_file">Can\'t edit this file in this device.</string>
     <string name="error_can_not_open_file">Can\'t open this file in this device.</string>
     <string name="error_unknown">An unknown error occurred</string>
     <string name="error_task_running">A task for this repo is already running</string>
@@ -36,7 +34,6 @@
     <string name="alert_choose_two_items">You can only choose two items</string>
     <string name="alert_no_items_selected">No items selected</string>
     <string name="alert_no_older_commits">No older commits to compare with</string>
-    <string name="alert_please_wait_previous_op">Previous operation is still running</string>
     <string name="alert_you_must_choose_one_commit_to_copy">Please choose exactly one commit to copy</string>
     <string name="alert_you_should_input_something">You should input something</string>
     <string name="alert_please_add_a_remote">Please add a remote first</string>

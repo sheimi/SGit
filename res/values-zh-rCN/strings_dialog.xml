@@ -36,7 +36,6 @@
 
     <!-- Push -->
     <string name="dialog_push_repo_title">推送到 &#8230;</string>
-    <string name="dialog_push_repo_msg">你确定推送本地的修改？</string>
     <string name="dialog_push_is_push_all">全部推送？</string>
     <string name="dialog_push_is_force_push">强制推送？</string>
     <string name="dialog_push_result">推送结果</string>

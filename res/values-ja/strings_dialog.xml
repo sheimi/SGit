@@ -36,7 +36,6 @@
 
     <!-- Push -->
     <string name="dialog_push_repo_title"> &#8230;にプッシュ</string>
-    <string name="dialog_push_repo_msg">ローカルでの変更をプッシュしてもよろしいですか?</string>
     <string name="dialog_push_is_push_all">全てプッシュしますか ?</string>
     <string name="dialog_push_result">プッシュ結果</string>
 

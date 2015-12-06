@@ -11,7 +11,6 @@
     <string name="action_clone">クローン</string>
     <string name="action_import_repo">リポジトリをインポート</string>
     <string name="action_git_profile">Git プロフィール</string>
-    <string name="action_settings">設定</string>
     <string name="action_manage_private_key">プライベートキー</string>
     <string name="action_feedback">フィードバック</string>
     <string name="action_choose_language">言語の選択</string>
@@ -35,8 +34,6 @@
     <string name="label_rename">名前の変更</string>
     <string name="label_send_feedback">フィードバックを送信</string>
     <string name="label_import">インポート</string>
-    <string name="label_push">プッシュ</string>
-    <string name="label_push_all">全てプッシュ</string>
     <string name="label_create">作成</string>
     <string name="label_checkout">チェックアウト</string>
     <string name="label_git_name">名前</string>
@@ -48,11 +45,7 @@
     <!-- for title -->
     <string name="title_activity_repo_detail">リポジトリ詳細アクティビティ</string>
     <string name="title_activity_import_repository">リポジトリをインポート</string>
-    <string name="title_activity_view_file">ファイル: </string>
     <string name="title_activity_commit_diff">Diff:   </string>
-    <string name="title_section1">セクション 1</string>
-    <string name="title_section2">セクション 2</string>
-    <string name="title_section3">セクション 3</string>
     <string name="tab_files_label">ファイル</string>
     <string name="tab_commits_label">コミット</string>
     <string name="tab_status_label">ステータス</string>
@@ -89,7 +82,6 @@
     <string name="progress_right_init">0/0</string>
     <string name="push_msg_init">プッシュしています …</string>
     <string name="title_activity_private_key_manage">プライベートキーを管理</string>
-    <string name="hello_world">Hello, World!</string>
     <string name="title_activity_explore_file">ファイルを探す</string>
 
     <!-- toast msg -->
