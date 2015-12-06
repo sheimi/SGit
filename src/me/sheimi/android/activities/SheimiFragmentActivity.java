@@ -145,7 +145,7 @@ public class SheimiFragmentActivity extends Activity {
 
     public void promptForPassword(OnPasswordEntered onPasswordEntered,
             int errorId) {
-        promptForPassword(onPasswordEntered, errorId);
+        promptForPassword(onPasswordEntered, getResources().getString(errorId));
     }
 
     public void promptForPassword(final OnPasswordEntered onPasswordEntered,
