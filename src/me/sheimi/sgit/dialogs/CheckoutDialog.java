@@ -77,7 +77,7 @@ public class CheckoutDialog extends SheimiDialogFragment implements
         AlertDialog dialog = (AlertDialog) getDialog();
         if (dialog == null)
             return;
-	Button positiveButton = (Button) dialog
+	Button positiveButton = dialog
 	    .getButton(Dialog.BUTTON_POSITIVE);
         positiveButton.setOnClickListener(this);
     }
