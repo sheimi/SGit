@@ -97,8 +97,7 @@ public class CloneDialog extends SheimiDialogFragment implements
         AlertDialog dialog = (AlertDialog) getDialog();
         if (dialog == null)
             return;
-        Button positiveButton = (Button) dialog
-                .getButton(Dialog.BUTTON_POSITIVE);
+        Button positiveButton = dialog.getButton(Dialog.BUTTON_POSITIVE);
         positiveButton.setOnClickListener(this);
     }
 
