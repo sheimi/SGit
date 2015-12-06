@@ -8,7 +8,6 @@
 
     <!-- action -->
     <string name="action_search">Search</string>
-    <string name="action_donate">Donate</string>
     <string name="action_clone">Clone</string>
     <string name="action_import_repo">Import Repository</string>
     <string name="action_git_profile">Git Profile</string>

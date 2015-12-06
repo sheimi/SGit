@@ -7,7 +7,6 @@
 
     <!-- action -->
     <string name="action_search">検索</string>
-    <string name="action_donate">寄付</string>
     <string name="action_clone">クローン</string>
     <string name="action_import_repo">リポジトリをインポート</string>
     <string name="action_git_profile">Git プロフィール</string>

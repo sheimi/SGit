@@ -5,7 +5,6 @@
 
     <!-- action -->
     <string name="action_search">Suchen</string>
-    <string name="action_donate">Spenden</string>
     <string name="action_clone">Clonen</string>
     <string name="action_import_repo">Repository importieren</string>
     <string name="action_git_profile">Git Profil</string>
