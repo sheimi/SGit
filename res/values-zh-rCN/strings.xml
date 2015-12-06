@@ -13,7 +13,6 @@
     <string name="action_git_profile">Git配置</string>
     <string name="action_settings">设置</string>
     <string name="action_manage_private_key">私钥</string>
-    <string name="action_add_private_key">添加私钥</string>
     <string name="action_feedback">反馈</string>
     <string name="action_choose_language">选择语言</string>
     <string name="action_mode_diff">比较</string>
