@@ -59,12 +59,13 @@ public class ImportLocalRepoDialog extends SheimiDialogFragment implements
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView,
                             boolean isChecked) {
+                        String fileName;
                         if (isChecked) {
-                            mLocalPath.setText(Repo.EXTERNAL_PREFIX
-                                    + mFile.getAbsolutePath());
+                            fileName = Repo.EXTERNAL_PREFIX + mFile.getAbsolutePath();
                         } else {
-                            mLocalPath.setText(mFile.getName());
+                            fileName = mFile.getName();
                         }
+                        mLocalPath.setText(fileName);
                         mLocalPath.setEnabled(isChecked);
                     }
                 });
