@@ -85,7 +85,7 @@ public class ViewFileActivity extends SheimiFragmentActivity {
 
     @Override
     protected void onPause() {
-        super.onResume();
+        super.onPause();
         if (mEditMode) {
             mFileContent.loadUrl(CodeGuesser.wrapUrlScript("save();"));
         }
