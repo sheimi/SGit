@@ -1,5 +1,6 @@
 package me.sheimi.sgit.activities.explorer;
 
+import android.annotation.SuppressLint;
 import android.app.DialogFragment;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -29,7 +30,8 @@ public class PrivateKeyGenerate extends SheimiDialogFragment {
     PrivateKeyGenerate(PrivateKeyManageActivity parent) {
 	mParent = parent;
     }
-    @Override
+    @SuppressLint("SetTextI18n")
+	@Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
