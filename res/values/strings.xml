@@ -78,7 +78,7 @@
 
     <!-- Dialog Msg -->
     <string name="dialog_choose_branch_title">Choose Branch</string>
-    <string name="dialog_choose_option">Choose option...</string>
+    <string name="dialog_choose_option">Choose option…</string>
     <string name="dialog_rename_repo_title">Rename Repository</string>
     <string name="dialog_rename_repo_hint">Repository Name</string>
     <string name="dialog_delete_repo_title">Delete Confirmation</string>

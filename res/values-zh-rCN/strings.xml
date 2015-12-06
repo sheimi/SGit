@@ -43,8 +43,8 @@
     <string name="label_git_name">名称</string>
     <string name="label_git_email">邮箱</string>
     <string name="label_done">完成</string>
-    <string name="label_choose_app_to_open">打开...</string>
-    <string name="label_choose_app_to_edit">编辑...</string>
+    <string name="label_choose_app_to_open">打开…</string>
+    <string name="label_choose_app_to_edit">编辑…</string>
 
     <!-- for title -->
     <string name="title_activity_repo_detail">仓库</string>
@@ -82,13 +82,13 @@
     <string name="dialog_prompt_for_password_title">需要认证</string>
     <string name="dialog_prompt_for_password_title_auth_fail">认证失败</string>
     <string name="dialog_prompt_for_password_checkbox">保存用户名和密码</string>
-    <string name="dialog_title_you_want_to">你正准备...</string>
+    <string name="dialog_title_you_want_to">你正准备…</string>
 
     <!-- Others -->
-    <string name="pull_msg_init">正在拉取...</string>
+    <string name="pull_msg_init">正在拉取…</string>
     <string name="progress_left_init">0%</string>
     <string name="progress_right_init">0/0</string>
-    <string name="push_msg_init">正在推送...</string>
+    <string name="push_msg_init">正在推送…</string>
     <string name="title_activity_private_key_manage">管理私钥</string>
     <string name="hello_world">Hello, World!</string>
     <string name="title_activity_explore_file">浏览文件</string>
