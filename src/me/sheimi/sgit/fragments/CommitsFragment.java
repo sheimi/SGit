@@ -57,13 +57,13 @@ public class CommitsFragment extends RepoDetailFragment implements
         return fragment;
     }
 
-    public void setFilter(String query){
+    public void setFilter(String query) {
         mCommitsListAdapter.setFilter(query);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_commits, container, false);
         getRawActivity().setCommitsFragment(this);
 
@@ -84,15 +84,15 @@ public class CommitsFragment extends RepoDetailFragment implements
                 .setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView,
-                            View view, int position, long id) {
+                                            View view, int position, long id) {
                         if (mActionMode == null) {
-			    if (position + 1 == mCommitsListAdapter.getCount()) {
-				showToastMessage(R.string.alert_no_older_commits);
-				return;
-			    }
-			    showDiff(null, position, position + 1, true);
-			    return;
-			}
+                            if (position + 1 == mCommitsListAdapter.getCount()) {
+                                showToastMessage(R.string.alert_no_older_commits);
+                                return;
+                            }
+                            showDiff(null, position, position + 1, true);
+                            return;
+                        }
                         chooseItem(position);
                     }
                 });
@@ -100,11 +100,11 @@ public class CommitsFragment extends RepoDetailFragment implements
                 .setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapterView,
-                            View view, int position, long l) {
-			if (mActionMode == null) {
+                                                   View view, int position, long l) {
+                        if (mActionMode == null) {
                             enterDiffActionMode();
                         }
-			chooseItem(position);
+                        chooseItem(position);
                         return true;
                     }
                 });
@@ -189,54 +189,52 @@ public class CommitsFragment extends RepoDetailFragment implements
     public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.action_mode_diff:
-		Integer[] items = mChosenItem.toArray(new Integer[0]);
-		if (items.length == 0) {
-		    showToastMessage(R.string.alert_no_items_selected);
-		    return true;
-		}
-		int item1,
-		    item2;
-		item1 = items[0];
-		if (items.length == 1) {
-		    item2 = item1 + 1;
-		    if (item2 == mCommitsListAdapter.getCount()) {
-			showToastMessage(R.string.alert_no_older_commits);
-			return true;
-		    }
-		} else {
-		    item2 = items[1];
-		}
+                Integer[] items = mChosenItem.toArray(new Integer[0]);
+                if (items.length == 0) {
+                    showToastMessage(R.string.alert_no_items_selected);
+                    return true;
+                }
+                int item1,
+                        item2;
+                item1 = items[0];
+                if (items.length == 1) {
+                    item2 = item1 + 1;
+                    if (item2 == mCommitsListAdapter.getCount()) {
+                        showToastMessage(R.string.alert_no_older_commits);
+                        return true;
+                    }
+                } else {
+                    item2 = items[1];
+                }
 
-		showDiff(actionMode, item1, item2, false);
+                showDiff(actionMode, item1, item2, false);
                 return true;
-            case R.id.action_mode_copy_commit:
-		{
-		    if (mChosenItem.size() != 1) {
-			showToastMessage(R.string.alert_you_must_choose_one_commit_to_copy);
-			return true;
-		    }
-		    int item = mChosenItem.iterator().next();
-		    String commit = mCommitsListAdapter.getItem(item).getName();
-		    ClipData clip = ClipData.newPlainText("commit_to_copy", commit);
-		    mClipboard.setPrimaryClip(clip);
-		    showToastMessage(R.string.msg_commit_str_has_copied);
-		    actionMode.finish();
-		    return true;
-		}
-	case R.id.action_mode_checkout:
-	    {
-		int item = mChosenItem.iterator().next();
-		String commit = mCommitsListAdapter.getItem(item).getName();
-		Bundle pathArg = new Bundle();
-		pathArg.putString(CheckoutDialog.BASE_COMMIT, commit);
-		pathArg.putSerializable(Repo.TAG, mRepo);
-		actionMode.finish();
-		CheckoutDialog ckd = new CheckoutDialog();
-		ckd.setArguments(pathArg);
-		ckd.show(getFragmentManager(), "rename-dialog");
+            case R.id.action_mode_copy_commit: {
+                if (mChosenItem.size() != 1) {
+                    showToastMessage(R.string.alert_you_must_choose_one_commit_to_copy);
+                    return true;
+                }
+                int item = mChosenItem.iterator().next();
+                String commit = mCommitsListAdapter.getItem(item).getName();
+                ClipData clip = ClipData.newPlainText("commit_to_copy", commit);
+                mClipboard.setPrimaryClip(clip);
+                showToastMessage(R.string.msg_commit_str_has_copied);
+                actionMode.finish();
+                return true;
+            }
+            case R.id.action_mode_checkout: {
+                int item = mChosenItem.iterator().next();
+                String commit = mCommitsListAdapter.getItem(item).getName();
+                Bundle pathArg = new Bundle();
+                pathArg.putString(CheckoutDialog.BASE_COMMIT, commit);
+                pathArg.putSerializable(Repo.TAG, mRepo);
+                actionMode.finish();
+                CheckoutDialog ckd = new CheckoutDialog();
+                ckd.setArguments(pathArg);
+                ckd.show(getFragmentManager(), "rename-dialog");
 
-		break;
-	    }
+                break;
+            }
 
         }
         return false;
