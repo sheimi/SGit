@@ -39,7 +39,7 @@ public class Profile {
         SharedPreferences.Editor editor = getProfileSharedPreference().edit();
         editor.putString(Profile.GIT_USER_NAME, username);
         editor.putString(Profile.GIT_USER_EMAIL, email);
-        editor.commit();
+        editor.apply();
     }
 
     public static boolean hasLastCloneFailed() {
