@@ -65,6 +65,7 @@
     <string name="title_activity_import_repository">Import Repository</string>
     <string name="title_activity_commit_diff">Diff:   </string>
     <string name="tab_files_label">Files</string>
+    <string name="tab_file_label">File</string>
     <string name="tab_commits_label">Commits</string>
     <string name="tab_status_label">Status</string>
 
