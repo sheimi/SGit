@@ -5,6 +5,7 @@ import java.util.List;
 import me.sheimi.android.activities.SheimiFragmentActivity;
 import me.sheimi.android.utils.CodeGuesser;
 import me.sheimi.android.utils.FsUtils;
+import me.sheimi.android.utils.Profile;
 import me.sheimi.sgit.R;
 import me.sheimi.sgit.database.models.Repo;
 import me.sheimi.sgit.repo.tasks.repo.CommitDiffTask;
@@ -12,6 +13,7 @@ import me.sheimi.sgit.repo.tasks.repo.CommitDiffTask.CommitDiffResult;
 
 import org.eclipse.jgit.diff.DiffEntry;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -82,7 +84,7 @@ public class CommitDiffActivity extends SheimiFragmentActivity {
         webSettings.setJavaScriptEnabled(true);
         mDiffContent.setWebChromeClient(new WebChromeClient() {
             public void onConsoleMessage(String message, int lineNumber,
-                    String sourceID) {
+                                         String sourceID) {
                 Log.d("MyApplication", message + " -- From line " + lineNumber
                         + " of " + sourceID);
             }
@@ -91,6 +93,7 @@ public class CommitDiffActivity extends SheimiFragmentActivity {
                 return false;
             }
         });
+        mDiffContent.setBackgroundColor(Color.TRANSPARENT);
     }
 
     private void setupActionBar() {
@@ -268,6 +271,10 @@ public class CommitDiffActivity extends SheimiFragmentActivity {
             return mDiffEntries.size();
         }
 
+        @JavascriptInterface
+        public String getTheme() {
+            return Profile.getCodeMirrorTheme();
+        }
     }
 
     private static final String HTML_TMPL = "<!doctype html>"

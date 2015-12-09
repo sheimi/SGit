@@ -28,4 +28,10 @@
             android:inputType="textEmailAddress"
             android:hint="@string/label_git_email"/>
 
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/use_dark_theme"
+        android:id="@+id/dark_theme" />
+
 </LinearLayout>

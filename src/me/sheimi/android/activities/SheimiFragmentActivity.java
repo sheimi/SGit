@@ -3,6 +3,7 @@ package me.sheimi.android.activities;
 import java.io.File;
 
 import me.sheimi.android.utils.BasicFunctions;
+import me.sheimi.android.utils.Profile;
 import me.sheimi.sgit.R;
 import me.sheimi.sgit.dialogs.DummyDialogListener;
 
@@ -36,6 +37,7 @@ public class SheimiFragmentActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BasicFunctions.setActiveActivity(this);
+        setTheme(Profile.getThemeResource());
     }
 
     @Override

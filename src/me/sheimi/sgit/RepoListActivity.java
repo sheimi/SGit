@@ -68,9 +68,9 @@ public class RepoListActivity extends SheimiFragmentActivity {
                 CloneDialog cloneDialog = new CloneDialog();
                 cloneDialog.show(getFragmentManager(), "clone-dialog");
                 return true;
-            case R.id.action_git_profile:
+            case R.id.action_preferences:
                 ProfileDialog profileDialog = new ProfileDialog();
-                profileDialog.show(getFragmentManager(), "profile-dialog");
+                profileDialog.show(getFragmentManager(), "preferences-dialog");
                 return true;
             case R.id.action_import_repo:
                 intent = new Intent(this, ImportRepositoryActivity.class);

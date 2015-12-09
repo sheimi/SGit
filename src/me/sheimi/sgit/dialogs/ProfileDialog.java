@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 /**
@@ -21,6 +22,7 @@ public class ProfileDialog extends SheimiDialogFragment implements
 
     private EditText mGitName;
     private EditText mGitEmail;
+    private CheckBox mDarkTheme;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -34,14 +36,17 @@ public class ProfileDialog extends SheimiDialogFragment implements
 
         mGitName = (EditText) layout.findViewById(R.id.gitName);
         mGitEmail = (EditText) layout.findViewById(R.id.gitEmail);
+        mDarkTheme = (CheckBox) layout.findViewById(R.id.dark_theme);
 
         String stored_name = Profile.getUsername();
         String stored_email = Profile.getEmail();
         mGitName.setText(stored_name);
         mGitEmail.setText(stored_email);
 
+        mDarkTheme.setChecked(Profile.getTheme() == 1);
+
         // set button listener
-        builder.setTitle(R.string.dialog_profile_git_profile_title);
+        builder.setTitle(R.string.dialog_profile_preferences_title);
         builder.setNegativeButton(getString(R.string.label_cancel),
                 new DummyDialogListener());
         builder.setPositiveButton(getString(R.string.label_done), this);
@@ -54,6 +59,8 @@ public class ProfileDialog extends SheimiDialogFragment implements
         String email = mGitEmail.getText().toString();
         String name = mGitName.getText().toString();
 
-        Profile.setProfileInformation(name, email);
+        Profile.setProfileInformation(name, email, mDarkTheme.isChecked() ? 1 : 0);
+        getActivity().recreate();
+        dismiss();
     }
 }

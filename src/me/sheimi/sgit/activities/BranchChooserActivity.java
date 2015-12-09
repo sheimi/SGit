@@ -1,6 +1,7 @@
 package me.sheimi.sgit.activities;
 
 import me.sheimi.android.activities.SheimiFragmentActivity;
+import me.sheimi.android.utils.Profile;
 import me.sheimi.sgit.R;
 import me.sheimi.sgit.activities.delegate.RepoOperationDelegate;
 import me.sheimi.sgit.adapters.RepoOperationsAdapter;
@@ -46,7 +47,7 @@ import me.sheimi.sgit.exception.StopTaskException;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import me.sheimi.sgit.dialogs.RenameBranchDialog;
 
-public class BranchChooserActivity extends Activity implements ActionMode.Callback {
+public class BranchChooserActivity extends SheimiFragmentActivity implements ActionMode.Callback {
     private Repo mRepo;
     private ListView mBranchTagList;
     private ProgressBar mLoadding;
@@ -230,10 +231,10 @@ public class BranchChooserActivity extends Activity implements ActionMode.Callba
             int commitType = Repo.getCommitType(commitName);
             switch (commitType) {
                 case Repo.COMMIT_TYPE_HEAD:
-                    holder.commitIcon.setImageResource(R.drawable.ic_branch_d);
+                    holder.commitIcon.setImageResource(Profile.getStyledResource(getContext(), R.drawable.ic_branch_l));
                     break;
                 case Repo.COMMIT_TYPE_TAG:
-                    holder.commitIcon.setImageResource(R.drawable.ic_tag_d);
+                    holder.commitIcon.setImageResource(Profile.getStyledResource(getContext(), R.drawable.ic_tag_l));
                     break;
             }
             holder.commitTitle.setText(displayName);

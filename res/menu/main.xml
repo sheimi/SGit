@@ -16,9 +16,9 @@
         android:showAsAction="never"
         android:title="@string/action_import_repo"/>
     <item
-        android:id="@+id/action_git_profile"
+        android:id="@+id/action_preferences"
         android:showAsAction="never"
-        android:title="@string/action_git_profile"/>
+        android:title="@string/action_preferences"/>
     <item
         android:id="@+id/action_manage_private_keys"
         android:showAsAction="never"
