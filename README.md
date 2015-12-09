@@ -11,6 +11,14 @@ A Git client for Android. Forked from [SGit](https://play.google.com/store/apps/
 
 ## Supported Features
 
+New in 1.4
+
+* Convenient way to edit .git/config
+* Possibility to override username and email on per-repo basis
+* Commit search
+* Dark theme
+* See commits touching a given file.
+
 New in 1.3
 
 * Multiline commit message amend
