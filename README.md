@@ -11,6 +11,11 @@ A Git client for Android. Forked from [SGit](https://play.google.com/store/apps/
 
 ## Supported Features
 
+New in 1.4.1
+
+* Bug fixes.
+* Improved responsiveness of commit search.
+
 New in 1.4
 
 * Convenient way to edit .git/config
