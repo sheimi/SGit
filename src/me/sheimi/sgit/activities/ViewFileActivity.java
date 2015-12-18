@@ -177,6 +177,16 @@ public class ViewFileActivity extends SheimiFragmentActivity {
 
     }
 
+    private void setSaveStatus(MenuItem mi) {
+        if (mFileFragment.getEditMode()) {
+            mi.setIcon(R.drawable.ic_action_save);
+            mi.setTitle(R.string.action_edit_save);
+        } else {
+            mi.setIcon(R.drawable.ic_action_edit);
+            mi.setTitle(R.string.action_edit);
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -190,13 +200,7 @@ public class ViewFileActivity extends SheimiFragmentActivity {
         }
         if (mActivityMode != TAG_MODE_SSH_KEY) {
             MenuItem mi = menu.findItem(R.id.action_edit);
-            if (mFileFragment.getEditMode()) {
-                mi.setIcon(R.drawable.ic_action_save);
-                mi.setTitle(R.string.action_edit_save);
-            } else {
-                mi.setIcon(R.drawable.ic_action_edit);
-                mi.setTitle(R.string.action_edit);
-            }
+            setSaveStatus(mi);
             mi.setVisible(mCurrentTab == FILE_FRAGMENT_INDEX);
             mi = menu.findItem(R.id.action_edit_in_other_app);
             mi.setVisible(mCurrentTab == FILE_FRAGMENT_INDEX);
@@ -251,6 +255,7 @@ public class ViewFileActivity extends SheimiFragmentActivity {
                     return true;
                 }
                 mFileFragment.setEditMode(!mFileFragment.getEditMode());
+                setSaveStatus(item);
                 return true;
             case R.id.action_choose_language:
                 if (mActivityMode == TAG_MODE_SSH_KEY) {
