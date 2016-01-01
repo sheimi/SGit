@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Forker</string>
+    <string name="default_text">Default Text</string>
+    <string name="title_clone_repo">Clone Repository</string>
+    <string name="preference_file_key">me.sheimi.sgit</string>
+
+    <!-- action -->
+    <string name="action_search">Search</string>
+    <string name="action_clone">Clone</string>
+    <string name="action_import_repo">Import Repository</string>
+    <string name="action_preferences">Preferences</string>
+    <string name="action_mode_rename_key">Rename key</string>
+    <string name="action_mode_rename_branch">Rename branch</string>
+    <string name="action_manage_private_key">Private Keys</string>
+    <string name="action_generate_private_key">Generate Key</string>
+    <string name="action_import_private_key">Import Key</string>
+    <string name="action_mode_show_private_key">Show private key</string>
+    <string name="action_mode_show_public_key">Show public key</string>
+    <string name="action_copy_all">Copy whole file</string>
+    <string name="action_feedback">Feedback</string>
+    <string name="action_choose_language">Choose Language</string>
+    <string name="action_mode_diff">Diff</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_edit_save">Save</string>
+    <string name="action_edit_in_other_app">Edit in other apps</string>
+    <string name="action_reset">Reset</string>
+    <string name="action_toggle_drawer">Toggle Drawer</string>
+    <string name="action_copy_commit_str">Copy Commit Hash</string>
+    <string name="action_create_external_repo">Create External Repo</string>
+    <string name="action_share_diff">Share diff</string>
+    <string name="action_save_diff">Save diff</string>
+
+    <!-- label msg -->
+    <string name="label_ok">OK</string>
+    <string name="label_remote_url">Remote URL</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="label_clone">Clone</string>
+    <string name="label_delete">Delete</string>
+    <string name="label_generate_key">Generate key</string>
+    <string name="label_dialog_generate_key">Generate key</string>
+    <string name="label_username">Username</string>
+    <string name="label_password">Password</string>
+    <string name="label_new_file_name">New Filename</string>
+    <string name="label_key_size">Key length</string>
+    <string name="label_rename">Rename</string>
+    <string name="label_send_feedback">Send Feedback</string>
+    <string name="label_import">Import</string>
+    <string name="label_create">Create</string>
+    <string name="label_checkout">Checkout</string>
+    <string name="label_git_name">Committer name</string>
+    <string name="label_git_email">Committer email</string>
+    <string name="label_git_name_per_repo">Committer name override</string>
+    <string name="label_git_email_per_repo">Committer email override</string>
+    <string name="label_done">Done</string>
+    <string name="label_save">Save</string>
+    <string name="label_choose_app_to_open">Open With …</string>
+    <string name="label_choose_app_to_edit">Edit With …</string>
+    <string name="label_new_branch_name">New Branch</string>
+    <string name="label_anonymous_checkout">Anonymous checkout</string>
+
+    <!-- for title -->
+    <string name="title_activity_repo_detail">Repository</string>
+    <string name="title_activity_import_repository">Import Repository</string>
+    <string name="title_activity_commit_diff">Diff:   </string>
+    <string name="tab_files_label">Files</string>
+    <string name="tab_file_label">File</string>
+    <string name="tab_commits_label">Commits</string>
+    <string name="tab_status_label">Status</string>
+
+    <!-- Dialog Msg -->
+    <string name="dialog_choose_branch_title">Choose Branch</string>
+    <string name="dialog_choose_option">Choose option…</string>
+    <string name="dialog_rename_repo_title">Rename Repository</string>
+    <string name="dialog_rename_repo_hint">Repository Name</string>
+    <string name="dialog_delete_repo_title">Delete Confirmation</string>
+    <string name="dialog_delete_repo_msg">Are you sure you want to delete this repository?</string>
+    <string name="dialog_rename_key_title">Rename</string>
+    <string name="dialog_rename_branch_title">Rename</string>
+    <string name="dialog_choose_language_title">Choose Language</string>
+    <string name="dialog_comfirm_import_repo_title">Import Repository</string>
+    <string name="dialog_comfirm_import_repo_msg">Are you sure you want to import this repository?</string>
+    <string name="dialog_merge_title">Choose Branch To Merge</string>
+    <string name="dialog_merge_checkbox">Commit after merge</string>
+    <string name="dialog_file_delete">Delete File</string>
+    <string name="dialog_file_delete_msg">Are you sure you want to delete this file or directory from working directory?</string>
+    <string name="dialog_file_remove_cached">Remove Cached File</string>
+    <string name="dialog_file_remove_cached_msg">Are you sure you want to delete this file or directory from index?</string>
+    <string name="dialog_file_remove_force">Remove Force File</string>
+    <string name="dialog_file_remove_force_msg">Are you sure you want to delete this file or directory from working directory and index?</string>
+    <string name="dialog_key_delete">Delete Key</string>
+    <string name="dialog_key_delete_msg">Are you sure you want to delete this key?</string>
+    <string name="dialog_branch_delete">Delete Branch</string>
+    <string name="dialog_branch_delete_msg">Are you sure you want to delete this branch?</string>
+    <string name="dialog_reset_commit_title">Reset Changes</string>
+    <string name="dialog_reset_commit_msg">Are you sure you want to discard all the changes?</string>
+    <string name="dialog_create_dir_title">New Directory</string>
+    <string name="dialog_create_dir_hint">Directory Name</string>
+    <string name="dialog_create_file_title">New File</string>
+    <string name="dialog_create_file_hint">File Name</string>
+    <string name="dialog_comfirm_checkout_commit_title">Confirm Checkout</string>
+    <string name="dialog_comfirm_checkout_commit_msg">Checkout Branch</string>
+    <string name="dialog_profile_preferences_title">Preferences</string>
+    <string name="dialog_prompt_for_password_title">Needs Authentication</string>
+    <string name="dialog_prompt_for_password_title_auth_fail">Authentication Failed</string>
+    <string name="dialog_prompt_for_password_checkbox">Save username and password</string>
+    <string name="dialog_title_you_want_to">You want to …</string>
+    <string name="dialog_create_branch_title">Create new branch</string>
+    <string name="dialog_create_branch_hint">BranchName</string>
+    <string name="dialog_show_unstaged_diff">Unstaged diff</string>
+    <string name="dialog_show_staged_diff">Staged diff</string>
+
+    <!-- Others -->
+    <string name="pull_msg_init">Pulling … </string>
+    <string name="progress_left_init">0%</string>
+    <string name="progress_right_init">0/0</string>
+    <string name="push_msg_init">Pushing … </string>
+    <string name="title_activity_private_key_manage">Manage Private Keys</string>
+    <string name="title_activity_explore_file">Explore Files</string>
+    <string name="title_config_repo">Repository config</string>
+
+    <!-- toast msg -->
+    <string name="feedback_subject">Feedback</string>
+    <string name="use_dark_theme">Use dark theme</string>
+</resources>
