@@ -24,6 +24,7 @@
         <item>Nouveau fichier</item>
         <item>Nouveau dépôt</item>
         <item>Add remote</item>
+        <item>Remove remote</item>
         <item>Supprimer</item>
     </string-array>
 </resources>
