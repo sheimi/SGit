@@ -153,7 +153,7 @@ public class CloneDialog extends SheimiDialogFragment implements
         mRepo.setUsername(username);
         mRepo.setPassword(password);
 
-        CloneTask task = new CloneTask(mRepo, this);
+        CloneTask task = new CloneTask(mActivity, mRepo, this);
         task.executeTask();
 
     }
