@@ -64,6 +64,20 @@ public class CloneDialog extends SheimiDialogFragment implements
             mLocalPath.setText(Repo.TEST_LOCAL);
         }
 
+        mRemoteURL.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (!hasFocus) {
+                    final String remoteUrl = mRemoteURL.getText().toString();
+                    final int lastSlash = remoteUrl.lastIndexOf("/");
+                    final String localHint = remoteUrl.substring(lastSlash + 1);
+                    if (!localHint.equals("") && lastSlash != -1) {
+                        mLocalPath.setHint(localHint);
+                    }
+                }
+            }
+        });
+
         // set button listener
         builder.setTitle(R.string.title_clone_repo);
         builder.setNegativeButton(R.string.label_cancel,
@@ -115,12 +129,13 @@ public class CloneDialog extends SheimiDialogFragment implements
             mRemoteURL.requestFocus();
             return;
         }
-        if (localPath.equals("")) {
-            showToastMessage(R.string.alert_localpath_required);
-            mLocalPath.setError(getString(R.string.alert_localpath_required));
-            mLocalPath.requestFocus();
-            return;
-        }
+        if (localPath.equals(""))
+            if (mLocalPath.getHint().equals(getString(R.string.dialog_clone_local_path_hint))) {
+                showToastMessage(R.string.alert_localpath_required);
+                mLocalPath.setError(getString(R.string.alert_localpath_required));
+                mLocalPath.requestFocus();
+                return;
+            }
         if (localPath.contains("/")) {
             showToastMessage(R.string.alert_localpath_format);
             mLocalPath.setError(getString(R.string.alert_localpath_format));
@@ -128,6 +143,11 @@ public class CloneDialog extends SheimiDialogFragment implements
             return;
         }
 
+        // If user is accepting the default path in the hint, we need to set localPath to
+        // the string in the hint, so that the following checks don't fail.
+        if (mLocalPath.getHint().toString() != getString(R.string.dialog_clone_local_path_hint)) {
+            localPath = mLocalPath.getHint().toString();
+        }
         File file = Repo.getDir(localPath);
         if (file.exists()) {
             showToastMessage(R.string.alert_localpath_repo_exists);
