@@ -71,6 +71,7 @@ public class CloneDialog extends SheimiDialogFragment implements
             return remoteUrl;
         }
     }
+
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         super.onCreateDialog(savedInstanceState);
         mActivity = (RepoListActivity) getActivity();
@@ -147,13 +148,14 @@ public class CloneDialog extends SheimiDialogFragment implements
             mRemoteURL.requestFocus();
             return;
         }
-        if (localPath.equals(""))
+        if (localPath.equals("")) {
             if (mLocalPath.getHint().equals(getString(R.string.dialog_clone_local_path_hint))) {
                 showToastMessage(R.string.alert_localpath_required);
                 mLocalPath.setError(getString(R.string.alert_localpath_required));
                 mLocalPath.requestFocus();
                 return;
             }
+        }
         if (localPath.contains("/")) {
             showToastMessage(R.string.alert_localpath_format);
             mLocalPath.setError(getString(R.string.alert_localpath_format));
