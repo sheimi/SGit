@@ -40,7 +40,37 @@ public class CloneDialog extends SheimiDialogFragment implements
     private RepoListActivity mActivity;
     private Repo mRepo;
 
-    @Override
+    private class RemoteUrlFocusListener implements View.OnFocusChangeListener {
+        @Override
+        public void onFocusChange(View view, boolean hasFocus) {
+            if (!hasFocus) {
+                final String remoteUrl = mRemoteURL.getText().toString();
+                String localHint = stripUrlFromRepo(remoteUrl);
+                localHint = stripGitExtension(localHint);
+                if (!localHint.equals("")) {
+                    mLocalPath.setHint(localHint);
+                }
+            }
+        }
+
+        private String stripUrlFromRepo(final String remoteUrl) {
+            final int lastSlash = remoteUrl.lastIndexOf("/");
+            if (lastSlash != -1) {
+                return remoteUrl.substring(lastSlash + 1);
+            }
+
+            return remoteUrl;
+        }
+
+        private String stripGitExtension(final String remoteUrl) {
+            final int extension = remoteUrl.indexOf(".git");
+            if (extension != -1) {
+                return remoteUrl.substring(0, extension);
+            }
+
+            return remoteUrl;
+        }
+    }
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         super.onCreateDialog(savedInstanceState);
         mActivity = (RepoListActivity) getActivity();
@@ -64,19 +94,7 @@ public class CloneDialog extends SheimiDialogFragment implements
             mLocalPath.setText(Repo.TEST_LOCAL);
         }
 
-        mRemoteURL.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                if (!hasFocus) {
-                    final String remoteUrl = mRemoteURL.getText().toString();
-                    final int lastSlash = remoteUrl.lastIndexOf("/");
-                    final String localHint = remoteUrl.substring(lastSlash + 1);
-                    if (!localHint.equals("") && lastSlash != -1) {
-                        mLocalPath.setHint(localHint);
-                    }
-                }
-            }
-        });
+        mRemoteURL.setOnFocusChangeListener(new RemoteUrlFocusListener());
 
         // set button listener
         builder.setTitle(R.string.title_clone_repo);
