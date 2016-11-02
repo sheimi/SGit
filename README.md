@@ -1,5 +1,7 @@
-
 A Git client for Android.
+
+# This roject is no longer being maintained. Further development on this app is now being done in the [MGit project](https://github.com/maks/MGit). Please submit all PRs and issues there.
+
 
 ## Notes
 
