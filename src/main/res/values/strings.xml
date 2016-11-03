@@ -167,4 +167,15 @@
     <string name="action_git_profile">Git Profile</string>
     <string name="action_open_in_other_app">Open in other apps</string>
     <string name="action_add_private_key">Add Private Key</string>
+    <string name="dialog_upgrade_title">Upgrade To MGit</string>
+    <string name="dialog_upgrade_message">SGit is no longer being developed. Please install MGit which continues development of this app with new features and bug fixes.
+        \n\nPlease note your Repos are currently stored in:\n
+        %s
+        \n\nMGit may NOT be set to use this location by default, it can be set in MGit settings after you have installed it.
+    </string>
+    <string name="dialog_upgrade_ok_button">Install MGit</string>
+    <string name="dialog_upgrade_cancel_button">Cancel</string>
+    <string name="default_repo_path">[sdcard dir]/Android/data/me.sheimi.sgit/files/repo</string>
+    <string name="sorry_play_missing_message">Sorry you do not have Google Play installed. You can install the latest MGit release directly using the APK for Github.</string>
+    <string name="dialog_goto_github_ok_button">Goto Github</string>
 </resources>
