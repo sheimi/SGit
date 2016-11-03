@@ -14,6 +14,7 @@ import me.sheimi.sgit.database.models.Repo;
  */
 public class Profile {
 
+    private static final String PREF_KEY_UPGRADE_SHOWN_COUNT = "pref_upgrade_shown_count";
     private static SharedPreferences sSharedPreference;
 
     private static boolean sHasLastCloneFail = false;
@@ -76,6 +77,17 @@ public class Profile {
         int styled = a.getResourceId(0, 0);
         a.recycle();
         return styled;
+    }
+
+    /**
+     * Increment the number of times shown and return result
+     * @param context
+     * @return
+     */
+    public static int incUpgradeMesssageShownCount(Context context) {
+        int count = getProfileSharedPreference(context).getInt(PREF_KEY_UPGRADE_SHOWN_COUNT, 0);
+        getProfileSharedPreference(context).edit().putInt(PREF_KEY_UPGRADE_SHOWN_COUNT, ++count).commit();
+        return count;
     }
 }
 

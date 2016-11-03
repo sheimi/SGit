@@ -2,17 +2,24 @@ package me.sheimi.sgit;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import org.slf4j.helpers.Util;
+
 import java.io.File;
 
 import me.sheimi.android.activities.SheimiFragmentActivity;
+import me.sheimi.android.utils.FsUtils;
+import me.sheimi.android.utils.Profile;
 import me.sheimi.sgit.activities.UserSettingsActivity;
 import me.sheimi.sgit.activities.explorer.ExploreFileActivity;
 import me.sheimi.sgit.activities.explorer.ImportRepositoryActivity;
@@ -25,6 +32,8 @@ import me.sheimi.sgit.ssh.PrivateKeyUtils;
 
 public class RepoListActivity extends SheimiFragmentActivity {
 
+    private static final String LOGTAG = RepoListActivity.class.getSimpleName();
+    private static final int MAX_UPGRADE_SHOW_TIMES = 4;
     private ListView mRepoList;
     private RepoListAdapter mRepoListAdapter;
 
@@ -41,6 +50,8 @@ public class RepoListActivity extends SheimiFragmentActivity {
         mRepoListAdapter.queryAllRepo();
         mRepoList.setOnItemClickListener(mRepoListAdapter);
         mRepoList.setOnItemLongClickListener(mRepoListAdapter);
+
+        showUpgradeDialog();
     }
 
     @Override
@@ -151,4 +162,59 @@ public class RepoListActivity extends SheimiFragmentActivity {
         rawfinish();
     }
 
+    // Prompt user to install MGit as SGit is no longer being maintained
+    private void showUpgradeDialog() {
+
+        if (Profile.incUpgradeMesssageShownCount(getApplicationContext()) > MAX_UPGRADE_SHOW_TIMES) {
+            return;
+        }
+
+        File repoLocation = FsUtils.getRepoDir(getApplicationContext(),"");
+        String mesg = getString(R.string.dialog_upgrade_message,
+                (repoLocation != null) ? repoLocation.toString() : getString(R.string.default_repo_path));
+
+        new AlertDialog.Builder(this)
+                .setMessage(mesg)
+                .setPositiveButton(getString(R.string.dialog_upgrade_ok_button), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent goToMarket = new Intent(Intent.ACTION_VIEW)
+                                .setData(Uri.parse("market://details?id=com.manichord.mgit"));
+                        try {
+                            startActivity(goToMarket);
+                        } catch (ActivityNotFoundException e) {
+                            dialog.dismiss();
+                            showNoGooglePlayDialog();
+                        }
+                    }
+                })
+                .setNegativeButton(getString(R.string.dialog_upgrade_cancel_button), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        dialog.cancel();
+                    }
+                })
+                .create().show();
+    }
+
+    private void showNoGooglePlayDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(RepoListActivity.this);
+        builder.setMessage(getString(R.string.sorry_play_missing_message));
+        builder.setPositiveButton(getString(R.string.dialog_goto_github_ok_button), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent goToGithub = new Intent(Intent.ACTION_VIEW)
+                        .setData(Uri.parse("https://github.com/maks/MGit/releases"));
+                try {
+                    startActivity(goToGithub);
+                } catch (ActivityNotFoundException e) {
+                    Log.e(LOGTAG, "could not show Github url for MGit", e);
+                }
+            }
+        })
+        .setNegativeButton(getString(R.string.dialog_upgrade_cancel_button), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int id) {
+                dialog.cancel();
+            }
+        }).create().show();
+    }
 }
